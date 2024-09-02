@@ -7,7 +7,7 @@ fn main() {
     v.sort();
 
 
-    let s1= &eq1[v[0]+1..v[1]];
+    let s1= &eq1[0..1];
 
     println!("{}", s1)
 
