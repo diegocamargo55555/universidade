@@ -12,60 +12,76 @@ fn main() {
     //let eq4 = String::from("$x * (3 + 2)$");
     //let eq2 = String::from("");
     //let eq2 = String::from("");
-    
+    let mut eqs: String =remove_whitespace(&mut eq1); // 9+5-7+5+6-8
 
-        let mut s =remove_whitespace(&mut eq1); // 9+5-7+5+6-8
-        println!("inicio: {}", s);
+    let mut menos: usize = 98;
+    let mut menos2: usize = 98;
+    let mut mais: usize = 98;
+    let mut mais2: usize = 98;
+    let mut cifrao: usize = 0;
+    let mut cifrao2: usize = eqs.len() - 1;
 
 
-        let mut menos: usize = s.chars().position(|c|c == '-').unwrap();
-        let mut mais = s.chars().position(|c|c == '+').unwrap();
-        let mut cifrao = s.chars().position(|c|c == '$').unwrap();
+    for i in 0..5 {
 
-        let mut v = vec![cifrao, menos, mais];
+        eqs = remove_whitespace(&mut eqs); // 9+5-7+5+6-8
+
+        println!("--------\ninicio: {}", eqs);
+
+        menos = eqs.chars().position(|c|c == '-').unwrap_or(99);
+        if menos != 99 {
+        menos2= eqs[menos+1..].chars().position(|c|c == '-').unwrap_or(99) + menos+1;
+        //println!("menos2: {}", &eqs[menos+2..]);
+        }
+
+        mais = eqs.chars().position(|c|c == '+').unwrap_or(99);
+        if mais != 99{
+        mais2 = eqs[mais+1..].chars().position(|c|c == '+').unwrap_or(99) + mais+1;
+        //println!("mais2: {}", &eqs[mais+2..]);
+        }     
+        cifrao2 = eqs.len() - 1;
+
+
+        let mut v: Vec<usize> = vec![cifrao, menos, mais, mais2, menos2, cifrao2];
         v.sort();
+        println!("vetor{:?}", v);
 
-        let ch = s.chars().nth(v[1]).unwrap();
+        let ch = eqs.chars().nth(v[1]).unwrap(); 
 
         //pega os numeros que serão usados na operação
-        let mut s1= &s[v[0]+1..v[1]];
+        let mut s1= &eqs[v[0]+1..v[1]];
+        println!("s1: {}", &s1);
         let mut n1: f64 =  s1.parse().unwrap();
-        let mut s2 = &s[v[1]+1..v[2]];
+
+        println!("v1: {}", v[0]);
+        println!("v2: {}", v[1]);
+
+
+        let mut s2: &str = &eqs[v[1]+1..v[2]];
+        println!("s2: {}", &s2);
+
         let mut n2: f64 =  s2.parse().unwrap();
         //println!("n1:{} \nn2:{}", n1, n2);
 
         resultado = operacao(ch, n1, n2);
         let mut resultadoSTR= resultado.to_string();
 
-        s.replace_range(v[1]+1..v[1]+2, &resultadoSTR);
-        s.replace_range(v[0]..v[1]+1, " ");
+        eqs.replace_range(v[1]+1..v[1]+2, &resultadoSTR);
+        eqs.replace_range(v[0]+1..v[1]+1, " ");
 
-        println!("tes2: {}", s);
+        println!("fim: {}", eqs);
 
+        println!("valor:{}", resultado); 
 
-        println!("valor2:{}", resultado);
-
-        /////////////
-
-        
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
+            
+    }
+    println!("tes3: {}", eqs);
 
 
 }
+
+
+
 
 fn remove_whitespace(s: &str) -> String {
     s.chars().filter(|c| !c.is_whitespace()).collect()
