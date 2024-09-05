@@ -1,5 +1,6 @@
 use crate::op::operacao;
 use crate::op::remove_whitespace;
+use crate::op::posi_sum_sub;
 
 pub fn soma_sub(mut eqs: String) {
     let (mut menos, mut menos2, mut mais, mut mais2, cifrao) = (98, 98, 98, 98, 0);
@@ -7,27 +8,21 @@ pub fn soma_sub(mut eqs: String) {
     let mut cifrao2: usize = eqs.len() - 1;
     let mut repet = eqs.chars().filter(|c| *c == '-').count();
     repet += eqs.chars().filter(|c| *c == '+').count();
+    let mut resultado_str = String::from("");
 
-    for i in 0..repet {
+    for _i in 0..repet {
         eqs = remove_whitespace(&mut eqs); // 9+5-7+5+6-8
 
         println!("--------\ninicio: {}", eqs);
 
         menos = eqs.chars().position(|c| c == '-').unwrap_or(99);
         if menos != 99 {
-            menos2 = eqs[menos + 1..]
-                .chars()
-                .position(|c| c == '-')
-                .unwrap_or(99)
-                + menos
-                + 1;
-            //println!("menos2: {}", &eqs[menos+2..]);
+            menos2 = eqs[menos + 1..].chars().position(|c| c == '-').unwrap_or(99) + menos + 1;
         }
 
         mais = eqs.chars().position(|c| c == '+').unwrap_or(99);
         if mais != 99 {
             mais2 = eqs[mais + 1..].chars().position(|c| c == '+').unwrap_or(99) + mais + 1;
-            //println!("mais2: {}", &eqs[mais+2..]);
         }
         cifrao2 = eqs.len() - 1; // pega a ultima posição do vetor
 
@@ -35,7 +30,6 @@ pub fn soma_sub(mut eqs: String) {
         v.sort();
         println!("vetor{:?}", v);
 
-        // $-3-7+5+6-8$
         if &eqs[1..2] == "-" {
             sinal = eqs.chars().nth(v[2]).unwrap();
 
@@ -48,14 +42,11 @@ pub fn soma_sub(mut eqs: String) {
 
             println!("sinal: {}___n1:{},___n2:{}", sinal, n1, n2);
             resultado = operacao(sinal, n1, n2);
-            let mut resultadoSTR = resultado.to_string();
+            resultado_str = resultado.to_string();
 
-            println!(
-                "replace1: {}\nreplace2: {}",
-                &eqs[v[1] + 1..v[1] + 2],
-                &eqs[v[0] + 1..v[1] + 1]
-            );
-            eqs.replace_range(v[2] + 1..v[2] + 2, &resultadoSTR); //
+            eqs.replace_range(v[2] + 1..v[2] + 2, &resultado_str); //
+            v = posi_sum_sub(eqs.clone());
+
             eqs.replace_range(v[1]..v[2] + 1, " "); //
         } else {
             sinal = eqs.chars().nth(v[1]).unwrap(); // pega o simbolo da operação a ser executada
@@ -69,15 +60,13 @@ pub fn soma_sub(mut eqs: String) {
 
             println!("sinal: {}___n1:{},___n2:{}", sinal, n1, n2);
             resultado = operacao(sinal, n1, n2);
-            let mut resultadoSTR = resultado.to_string();
+            resultado_str = resultado.to_string();
 
-            println!(
-                "replace1: {}\nreplace2: {}",
-                &eqs[v[1] + 1..v[1] + 2],
-                &eqs[v[0] + 1..v[1] + 1]
-            );
-            eqs.replace_range(v[1] + 1..v[1] + 2, &resultadoSTR);
-            eqs.replace_range(v[0] + 1..v[1] + 1, " ");
+            eqs.replace_range(v[1] + 1..v[2] , &resultado_str); //
+            println!("pre: {}", eqs);
+
+            v = posi_sum_sub(eqs.clone());
+            eqs.replace_range(v[0] + 1..v[1] + 1, " "); // 
         }
         println!("fim: {}", eqs);
 
