@@ -40,15 +40,20 @@ pub fn soma_sub(mut eqs: String) {
             s2 = &eqs[v[2] + 1..v[3]];
             n2 = s2.parse().unwrap();
 
-            println!("sinal: {}___n1:{},___n2:{}", sinal, n1, n2);
             resultado = operacao(sinal, n1, n2);
             resultado_str = resultado.to_string();
 
-            eqs.replace_range(v[2] + 1..v[2] + 2, &resultado_str); //
+            println!("antes: {}", eqs);
+            eqs.replace_range(v[2] + 1..v[3] , &resultado_str); //
+
+
             v = posi_sum_sub(eqs.clone());
+            println!("{}",eqs);
+            println!("v:{:?}", v);
 
             eqs.replace_range(v[1]..v[2] + 1, " "); //
-        } else {
+        } 
+        else {
             sinal = eqs.chars().nth(v[1]).unwrap(); // pega o simbolo da operação a ser executada
 
             //pega os numeros que serão usados na operação
@@ -58,12 +63,11 @@ pub fn soma_sub(mut eqs: String) {
             s2 = &eqs[v[1] + 1..v[2]];
             n2 = s2.parse().unwrap();
 
-            println!("sinal: {}___n1:{},___n2:{}", sinal, n1, n2);
             resultado = operacao(sinal, n1, n2);
             resultado_str = resultado.to_string();
 
+
             eqs.replace_range(v[1] + 1..v[2] , &resultado_str); //
-            println!("pre: {}", eqs);
 
             v = posi_sum_sub(eqs.clone());
             eqs.replace_range(v[0] + 1..v[1] + 1, " "); // 
@@ -72,5 +76,4 @@ pub fn soma_sub(mut eqs: String) {
 
         println!("valor:{}", resultado);
     }
-    println!("tes3: {}", eqs);
 }

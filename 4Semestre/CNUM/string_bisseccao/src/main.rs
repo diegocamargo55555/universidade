@@ -4,7 +4,7 @@ use crate::sum_sub::soma_sub;
 
 fn main() {
     let x = "9";
-    let mut eq1: String = String::from("$x + 5555 - 77 + 5 + 6000 -8 $");
+    let mut eq1: String = String::from("$x + 555.5 - 777.7 + 5 + 6000 -8 $");
 
     //let eq2 = String::from("$x + 2 * 3$");
     //let eq3 = String::from("$x * 3 + 2$");
