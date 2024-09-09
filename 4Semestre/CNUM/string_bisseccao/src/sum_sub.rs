@@ -1,10 +1,8 @@
 use crate::op::prep_troca;
 use crate::op::remove_whitespace;
-use crate::op::posi_sum_sub;
 
 pub fn soma_sub(mut eqs: String) {
     
-    let mut resultado_str;
     let mut repet = eqs.chars().filter(|c| *c == '-').count();
     repet += eqs.chars().filter(|c| *c == '+').count();
 
@@ -18,22 +16,36 @@ pub fn soma_sub(mut eqs: String) {
 
         if &eqs[1..2] == "-" {
 
-            resultado_str = prep_troca(eqs.clone(), &v);
-            println!("antes: {}", eqs);
-             
-            eqs.replace_range(v[2] + 1..v[3] , &resultado_str); // troca os chars entre o terceiro e quarto sinal pelo resulado 
-            v = posi_sum_sub(eqs.clone());
-            eqs.replace_range(v[1]..v[2] + 1, " "); //
+            eqs = prep_troca(eqs.clone(), &v);
+
         } 
         else {
 
-            resultado_str = prep_troca(eqs.clone(), &v);
-            println!("antes: {}", eqs);
+            eqs = prep_troca(eqs.clone(), &v);
 
-            eqs.replace_range(v[1] + 1..v[2] , &resultado_str); //
-            v = posi_sum_sub(eqs.clone());
-            eqs.replace_range(v[0] + 1..v[1] + 1, " "); // 
         }
         println!("fim: {}", eqs);
     }
+}
+
+
+pub fn posi_sum_sub(eqs: String) -> Vec<usize> { // pega a posição em que está o sinal e ordena em ordem crescente 
+    let (mut menos2, mut mais2, cifrao) = (98, 98, 0);
+    let (menos, mais);
+    let cifrao2: usize = eqs.len() - 1; // pega a ultima posição do vetor
+
+    menos = eqs.chars().position(|c| c == '-').unwrap_or(99);
+    if menos != 99 {
+        menos2 = eqs[menos + 1..].chars().position(|c| c == '-').unwrap_or(99)+ menos + 1;
+    }
+
+    mais = eqs.chars().position(|c| c == '+').unwrap_or(99);
+    if mais != 99 {
+        mais2 = eqs[mais + 1..].chars().position(|c| c == '+').unwrap_or(99) + mais + 1;
+    }
+
+    let mut v: Vec<usize> = vec![cifrao, menos, menos2, mais, mais2, cifrao2];
+    v.sort();
+
+    return v;
 }
