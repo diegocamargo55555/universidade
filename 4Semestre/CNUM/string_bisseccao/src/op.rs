@@ -20,51 +20,32 @@ pub fn operacao(ch: char, n1: f64, n2: f64) -> f64 {
 }
 
 
-pub fn prep_troca(mut eqs: String, v: &Vec<usize>) -> String
+pub fn do_sum_sub(mut eqs: String, v: &Vec<usize>) -> String
 {
     let (s1, s2,n2, resultado, sinal,);
     let sinal_posi:usize;
-    let mut n1: f64;
+    let n1: f64;
     let td_posicoes = get_all(eqs.clone());
 
 
     if &eqs[1..2] == "-"  {
         sinal = eqs.chars().nth(v[2]).unwrap();
         sinal_posi = eqs[2..].chars().position(|s| s == sinal).unwrap() + 2;
-        println!("sinal: {} ", sinal);
-        println!("posi_sinal: {} ", sinal_posi);
-
-        
-        println!("vet_td:{:?}", td_posicoes);
-
         let antes_sinal:usize = td_posicoes.iter().position(|n| n == &sinal_posi).unwrap() - 1;
         let next_sinal:usize = td_posicoes.iter().position(|n| n == &sinal_posi).unwrap() + 1;
 
-        println!("antes sinal: {}",td_posicoes[antes_sinal]);
-        println!("prep_troca_eqs: {}", eqs);
-
-
         //pega os numeros que serão usados na operação
-
         s1 = &eqs[td_posicoes[antes_sinal] .. sinal_posi];
         n1 = s1.parse().unwrap();
 
         s2 = &eqs[sinal_posi + 1..td_posicoes[next_sinal]];
         n2 = s2.parse().unwrap();
 
-
-        println!("operação2: {} {} {}", n1, sinal, n2 );
         resultado = operacao(sinal, n1, n2);   
-        
 
         let resultado_str = resultado.to_string();
-        println!("fim1: {}", eqs);
 
-        println!("replace1: {}", &eqs[td_posicoes[antes_sinal]..td_posicoes[next_sinal]]);
         eqs.replace_range(td_posicoes[antes_sinal]..td_posicoes[next_sinal] , &resultado_str); //
-
-
-        println!("fim2: {}", eqs);
 
         return eqs;
     }
@@ -75,13 +56,6 @@ pub fn prep_troca(mut eqs: String, v: &Vec<usize>) -> String
         let antes_sinal:usize = td_posicoes.iter().position(|n| n == &sinal_posi).unwrap() - 1;
         let next_sinal:usize = td_posicoes.iter().position(|n| n == &sinal_posi).unwrap() + 1;
 
-        println!("antes sinal: {}",td_posicoes[antes_sinal]);
-
-        println!("vet_td:{:?}", td_posicoes);
-        println!("prep_troca_eqs: {}", eqs);
-        println!("posi_sinal: {} ", sinal_posi);
-
-
         //pega os numeros que serão usados na operação
 
         s1 = &eqs[td_posicoes[antes_sinal]+1 .. sinal_posi];
@@ -90,29 +64,18 @@ pub fn prep_troca(mut eqs: String, v: &Vec<usize>) -> String
         s2 = &eqs[sinal_posi + 1..td_posicoes[next_sinal]];
         n2 = s2.parse().unwrap();
 
-
-        println!("operação2: {} {} {}", n1, sinal, n2 );
         resultado = operacao(sinal, n1, n2);   
-        
-
         let resultado_str = resultado.to_string();
-        println!("fim1: {}", eqs);
 
-        println!("replace1: {}", &eqs[td_posicoes[antes_sinal] + 1..td_posicoes[next_sinal]]);
         eqs.replace_range(td_posicoes[antes_sinal] + 1..td_posicoes[next_sinal] , &resultado_str); //
-
-
-        println!("fim2: {}", eqs);
 
         return eqs;
     } 
 }
 
 pub fn get_all(eqs: String) -> Vec<usize> {
-    let (mut mult2, mut div2, cifrao) = (98,98, 0);
-    let (mult,  div);
-    let (mut menos2, mut mais2) = (98, 98);
-    let (menos, mais);
+    let (mut mult2, mut div2, cifrao, mut menos2, mut mais2) = (98, 98, 0, 98, 98);
+    let (mult,  div, menos, mais);
     let cifrao2: usize = eqs.len() - 1; // pega a ultima posição do vetor
 
     menos = eqs.chars().position(|c| c == '-').unwrap_or(99);

@@ -1,6 +1,6 @@
 use crate::op::remove_whitespace;
-use crate::op::prep_troca;
 use crate::op::get_all;
+use crate::op::operacao;
 
 pub fn posi_mult_div(eqs: String) -> Vec<usize>{
     let (mut mult2, mut div2, cifrao) = (98,98, 0);
@@ -34,23 +34,38 @@ pub fn mult_div(mut eqs: String) ->String{
 
         println!("--------\ninicio: {}", eqs);
 
-        let mut v = posi_mult_div(eqs.clone());
-        let mut td_posicoes = get_all(eqs.clone());
-
-
+        let v = posi_mult_div(eqs.clone());
         println!("vetor{:?}", v);
 
-        if &eqs[1..2] == "-" {
+        eqs = do_mult_div(eqs.clone(), &v);
 
-            eqs = prep_troca(eqs.clone(), &v);
-
-        } 
-        else {
-            eqs = prep_troca(eqs.clone(), &v);
-
-        }
         println!("fim: {}", eqs);
     }
 
+    return eqs;
+}
+
+pub fn do_mult_div(mut eqs: String, v: &Vec<usize>) -> String
+{
+    let (s1, s2,n2, resultado, sinal,);
+    let sinal_posi:usize;
+    let n1: f64;
+    let td_posicoes = get_all(eqs.clone());
+
+    sinal = eqs.chars().nth(v[1]).unwrap();
+    sinal_posi = eqs[2..].chars().position(|s| s == sinal).unwrap() + 2;
+    let antes_sinal:usize = td_posicoes.iter().position(|n| n == &sinal_posi).unwrap() - 1;
+    let next_sinal:usize = td_posicoes.iter().position(|n| n == &sinal_posi).unwrap() + 1;
+
+    //pega os numeros que serão usados na operação
+    s1 = &eqs[td_posicoes[antes_sinal] .. sinal_posi];
+    n1 = s1.parse().unwrap();
+
+    s2 = &eqs[sinal_posi + 1..td_posicoes[next_sinal]];
+    n2 = s2.parse().unwrap();
+
+    resultado = operacao(sinal, n1, n2);   
+    let resultado_str = resultado.to_string();
+    eqs.replace_range(td_posicoes[antes_sinal]..td_posicoes[next_sinal] , &resultado_str); //
     return eqs;
 }

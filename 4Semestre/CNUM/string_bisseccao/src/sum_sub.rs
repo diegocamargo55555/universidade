@@ -1,4 +1,4 @@
-use crate::op::prep_troca;
+use crate::op::do_sum_sub;
 use crate::op::remove_whitespace;
 
 pub fn soma_sub(mut eqs: String) {
@@ -11,26 +11,18 @@ pub fn soma_sub(mut eqs: String) {
         eqs = remove_whitespace(&mut eqs); 
         println!("--------\ninicio: {}", eqs);
 
-        let mut v = posi_sum_sub(eqs.clone()); // pega a posição em que está o sinal e ordena em ordem crescente 
+        let v = posi_sum_sub(eqs.clone()); // pega a posição em que está o sinal e ordena em ordem crescente 
         println!("vetor{:?}", v);
 
-        if &eqs[1..2] == "-" {
+        eqs = do_sum_sub(eqs.clone(), &v);
 
-            eqs = prep_troca(eqs.clone(), &v);
-
-        } 
-        else {
-
-            eqs = prep_troca(eqs.clone(), &v);
-
-        }
         println!("fim: {}", eqs);
     }
 }
 
 
 pub fn posi_sum_sub(eqs: String) -> Vec<usize> { // pega a posição em que está o sinal e ordena em ordem crescente 
-    let (mut menos2, mut mais2, cifrao) = (98, 98, 0);
+let (mut menos2, mut mais2, cifrao) = (98, 98, 0);
     let (menos, mais);
     let cifrao2: usize = eqs.len() - 1; // pega a ultima posição do vetor
 
