@@ -1,18 +1,26 @@
-#include <iostream>
 #include "tree.h"
+#include <cstdio>
 #include <vector>
 #include <queue>
-#include <unordered_map>
-
-
 using namespace std;
 
-int nivel =0 ;
 
 void print_nivel(no* t, int i)
 {
+    int nivel = 0;
+    level p;
+    p.nivel = 0;
+
+
+    queue<pair<no*, int> > Fila_2;
     queue<no*> fila;
+
     fila.push(t);
+    Fila_2.push({t, nivel});
+
+    if (t != nullptr) {
+        printf("%i\n", t->info);
+    }
 
     while (!fila.empty())
     {
@@ -21,15 +29,25 @@ void print_nivel(no* t, int i)
         
         if (atual->Llink != nullptr)
         {
-            fila.push(atual->Llink);
+            Fila_2.push({atual->Llink, nivel});
         }
         if (atual->Rlink != nullptr)
         {
-            fila.push(atual->Rlink);
+            Fila_2.push({atual->Rlink, nivel});
         }
 
         fila.pop();
     }
+
+        nivel++;
+        fila.pop();
+        printf("\n");
+        if ()
+        {
+            /* code */
+        }
+        
+    
 }
 
 
@@ -38,7 +56,7 @@ int main(){
     int i = 0;
     t = ini_AB(t);
     vector<int> v;
-    
+
     t = insere_AB(t, 9);
     t = insere_AB(t, 65);
     t = insere_AB(t, 4);
@@ -53,10 +71,4 @@ int main(){
     t = insere_AB(t, 9);
     print_nivel(t, i);
     //preOrdem_AB(t);
-
 }
-
-
-
-
-

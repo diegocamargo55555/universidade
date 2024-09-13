@@ -1,11 +1,18 @@
 #include <iostream>
 using namespace std;
 
+struct level
+{
+	no *no;
+	int nivel;
+};
+
 
 struct no {
 	int info;
 	no *Llink;
 	no *Rlink;
+	
 };
 
 no *ini_AB(no *T) {
