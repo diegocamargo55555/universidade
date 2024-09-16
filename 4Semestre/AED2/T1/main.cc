@@ -8,17 +8,17 @@ using namespace std;
 int nivel =0 ;
 
 
-fila *asdf(no* t, int nivel, fila *f){
+fila *insere_com_nivel(no* t, int nivel, fila *f){
     if (t != nullptr)
     {
         f = insereFP(f, t->info, nivel);
 
         if(t->Llink != NULL){
-            asdf(t->Llink, nivel + 1, f);
+            insere_com_nivel(t->Llink, nivel + 1, f);
         }
 
         if(t->Rlink != NULL){
-            asdf(t->Rlink, nivel + 1, f);
+            insere_com_nivel(t->Rlink, nivel + 1, f);
         }
     }
     return f;
@@ -27,6 +27,7 @@ fila *asdf(no* t, int nivel, fila *f){
 int main(){
     no *t;
     t = ini_AB(t);
+    
     
     t = insere_AB(t, 9);
     t = insere_AB(t, 65);
@@ -43,7 +44,7 @@ int main(){
 
     fila *f;
     f = inicializaFP(f);
-    f = asdf(t, 0, f);
+    f = insere_com_nivel(t, 0, f);
     cout << "test" << endl;
     exibe(f);
 

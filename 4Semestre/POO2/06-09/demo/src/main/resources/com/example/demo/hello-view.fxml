@@ -11,8 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.HelloController">
    <children>
       <Label fx:id="lbl_log" alignment="TOP_LEFT" text="Login">
          <font>
@@ -34,28 +33,37 @@
          <children>
             <Label alignment="TOP_RIGHT" contentDisplay="RIGHT" prefHeight="18.0" prefWidth="217.0" text="Usuario" />
             <Label alignment="TOP_RIGHT" prefHeight="18.0" prefWidth="215.0" text="Senha" GridPane.rowIndex="2" />
-            <TextField nodeOrientation="LEFT_TO_RIGHT" prefHeight="26.0" prefWidth="309.0" promptText="Text_user" GridPane.columnIndex="1">
+            <TextField fx:id="tfdUsuario" nodeOrientation="LEFT_TO_RIGHT" prefHeight="26.0" prefWidth="309.0" promptText="Text_user" GridPane.columnIndex="1">
                <GridPane.margin>
                   <Insets right="50.0" />
                </GridPane.margin>
                <font>
                   <Font size="20.0" />
                </font>
+               <opaqueInsets>
+                  <Insets top="20.0" />
+               </opaqueInsets>
             </TextField>
-            <PasswordField prefHeight="26.0" prefWidth="440.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <PasswordField fx:id="pfdSenha" prefHeight="26.0" prefWidth="440.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets right="50.0" />
                </GridPane.margin>
                <font>
                   <Font size="20.0" />
                </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
             </PasswordField>
-            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="352.0" text="btn_acess" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <Button mnemonicParsing="false" onAction="#btnAcessarOnAction" prefHeight="26.0" prefWidth="352.0" text="btn_acess" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <GridPane.margin>
                   <Insets right="50.0" />
                </GridPane.margin>
             </Button>
          </children>
+         <padding>
+            <Insets top="50.0" />
+         </padding>
       </GridPane>
    </children>
 </VBox>
