@@ -7,7 +7,7 @@ use crate::mul_div::mult_div;
 
 fn main() {
     let x = "-2";
-    //let mut eq1: String = String::from("$57*x/4.56 + 12*x*12*x*4/3*x + 0*0 - 0*x $");
+    //let mut eq2: String = String::from("$57*x/4.56 + 12*x*12*x*4/3*x + 0*0 - 0*x $");
 
     
     let mut eq2 = String::from("$x * 2 * 3 * 77 - 3* 99 *5 +23 +56$");
