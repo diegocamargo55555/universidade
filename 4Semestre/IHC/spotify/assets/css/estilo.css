@@ -10,9 +10,10 @@ html, body, #home {
 	overflow-x: hidden;
 }
 
+
 body {
-	background: url(/assets/css/imagens/capa.png),
-				url(/assets/css/imagens/ruido.png),
+	background: url(/home/diego/Documents/universidade/4Semestre/IHC/spotify/assets/css/imagens/capa.png),
+				url(/home/diego/Documents/universidade/4Semestre/IHC/spotify/assets/css/imagens/ruido.png),
 				linear-gradient(50deg,#ff4169,#7c26f8);
 	background-attachment: fixed;
 	font-family: Helvetica,Arial,sans-serif;
