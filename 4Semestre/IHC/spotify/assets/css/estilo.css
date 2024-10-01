@@ -106,9 +106,15 @@ nav.navbar-transparente {
 	color: white;
 }
 
+/* Dashed border */
+hr.dashed {
+	border-top: 3px dashed #ffffff;
+  }
+  
+
 #recursos h3 {
 	color: #9bf0e1;
-}
+}   
 
 .albuns {
 	padding: 10px 0;
@@ -162,6 +168,8 @@ h1 {
 	margin-bottom: 50px;
 	color: white;
 }
+
+
 
 h2 {
 	font-size: 3em;
