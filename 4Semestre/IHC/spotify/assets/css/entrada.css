@@ -12,7 +12,7 @@ html, body, #home {
 
 
 body {
-	background: url(/home/diego/Documents/universidade/4Semestre/IHC/spotify/assets/css/imagens/dark_blue.jpg),
+	background: url(/home/diego/Documents/universidade/4Semestre/IHC/spotify/assets/css/imagens/dark_blue),
 				url(/home/diego/Documents/universidade/4Semestre/IHC/spotify/assets/css/imagens/dark_blue.jpg),
 				linear-gradient(50deg,#ff4169,#7c26f8);
 	background-attachment: fixed;
@@ -180,6 +180,25 @@ h3 {
 	font-weight: 700;
 	letter-spacing: -0.04em;
 }
+
+.flex-box {
+	
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+  }
+  
+
+  
+.content-box {
+    background-color: #8f08c48e;
+	color: white;
+	box-shadow: 10px 10px 10px 10px rgba(5, 5, 5, 0.137);
+	text-align: center;
+	width: 700px;
+}
+  
 
 
 
