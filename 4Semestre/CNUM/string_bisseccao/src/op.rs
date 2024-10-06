@@ -28,7 +28,7 @@ pub fn do_sum_sub(mut eqs: String, v: &Vec<usize>) -> String
     let td_posicoes = get_all(eqs.clone());
 
 
-    if &eqs[1..2] == "-"  {
+    if &eqs[1..2] == "-" {
         sinal = eqs.chars().nth(v[2]).unwrap();
         sinal_posi = eqs[2..].chars().position(|s| s == sinal).unwrap() + 2;
         let antes_sinal:usize = td_posicoes.iter().position(|n| n == &sinal_posi).unwrap() - 1;

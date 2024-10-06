@@ -7,10 +7,11 @@ use crate::mul_div::mult_div;
 
 fn main() {
     let x = "-2";
-    //let mut eq2: String = String::from("$57*x/4.56 + 12*x*12*x*4/3*x + 0*0 - 0*x $");
+    //let mut eq2: String = String::from("$55*-3 $");
 
     
-    let mut eq2 = String::from("$x * 2 * 3 * 77 - 3* 99 *5 +23 +56$");
+    let mut eq2 = String::from("$x * 2 * 3 / 77 - 3* 99 *5 +23 +56$");
+    //let mut eq2 = String::from("$78 +54 -99 - 55 -45 +15 $");
 
 
     // Causa  bug
