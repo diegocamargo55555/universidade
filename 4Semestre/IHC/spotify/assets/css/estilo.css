@@ -45,6 +45,7 @@ nav.navbar-transparente {
 	margin: 12px 15px;
 }
 
+
 /* Capa
 -----------------------------*/
 .capa {
@@ -224,4 +225,11 @@ h3 {
 	}
 }
 
-
+.code {
+	width: auto;
+	height: auto;
+	border: 1px solid black;
+	padding: 10px;
+	margin: 10px;
+  }
+  
