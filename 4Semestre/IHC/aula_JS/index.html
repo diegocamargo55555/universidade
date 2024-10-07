@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <button id="meuBotao">Clique aqui</button>
+
+    <script>
+
+        const botao =
+            document.getElementById('meuBotao');
+        botao.addEventListener('click', function () {
+            alert('Botão clicado');
+        });
+
+    </script>
+
+    <form id="meuFormulario">
+        <label for="nome">Nome:</label>
+        <input type="text" name="nome" id="nome">
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email">
+
+        <label for="senha">Senha</label>
+        <input type="password" name="senha" id="senha">
+
+        <button type="submit">Enviar</button>
+
+        <script>
+            const formulario = document.getElementById('meuFormulario');
+            formulario.addEventListener('submit', function (evento) {
+
+                const nome = document.getElementById('nome').value;
+                const email = document.getElementById('email').value;
+                const senha = document.getElementById('senha').value;
+
+                if (nome === '' || email === '' || senha === '') {
+                    alert('Preencha todos os campos');
+                    return false;
+                }
+            });
+
+        </script>
+
+
+
+    </form>
+
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form id="meuFormulario">
+
+        <label for="numero_lb">numero:</label>
+        <input type="int" name="numero" id="numero">
+        <button type="submit">Enviar</button>
+    </form>
+
+
+
+        <script>
+            const formulario = document.getElementById('meuFormulario');
+            formulario.addEventListener('submit', function () {
+
+                const numero = document.getElementById('numero').value;
+
+                alert(numero * 2);
+            });
+
+        </script>
+</body>
+
+</html>

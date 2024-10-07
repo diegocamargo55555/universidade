@@ -61,52 +61,62 @@
 
     <br>
     <br>
-    <div class="container align-self-center">
-        <h1>Spotify for Linux</h1>
+    <div class="flex-box">
+        <div class="content-box">
+            <h1>Spotify for Linux</h1>
 
-        <p>
-            Aqui você pode encontrar diferentes maneiras de instalar o Spotify para Linux.
-            O Spotify para Linux é um trabalho de amor de nossos engenheiros que queriam
-            ouvir o Spotify em suas máquinas de desenvolvimento Linux. Eles trabalham
-            nele em seu tempo livre e atualmente não é uma plataforma que
-            oferecemos suporte ativo. A experiência pode ser diferente de nossos outros clientes
-            do Spotify Desktop, como Windows e Mac. Você pode nos dizer o que
-            pensa e pedir ajuda a outros usuários no <a href="">quadro Desktop (Linux)</a> no
-            fórum da Comunidade Spotify.
-        </p>
+            <p>
+                Aqui você pode encontrar diferentes maneiras de instalar o Spotify para Linux.
+                O Spotify para Linux é um trabalho de amor de nossos engenheiros que queriam
+                ouvir o Spotify em suas máquinas de desenvolvimento Linux. Eles trabalham
+                nele em seu tempo livre e atualmente não é uma plataforma que
+                oferecemos suporte ativo. A experiência pode ser diferente de nossos outros clientes
+                do Spotify Desktop, como Windows e Mac. Você pode nos dizer o que
+                pensa e pedir ajuda a outros usuários no <a class="a-download" href="">quadro Desktop (Linux)</a> no
+                fórum da Comunidade Spotify.
+            </p>
 
-        <h2>Install on Ubuntu</h2>
-        <p>Vá para <a href="">Spotify no Ubuntu Software</a> e clique em instalar. Se o link não funcionar, abra o Ubuntu
-            Software e pesquise por Spotify.</p>
+            <h2>Install on Ubuntu</h2>
+            <p>Vá para <a class="a-download" href="">Spotify no Ubuntu Software</a> e clique em instalar. Se o link não funcionar,
+                abra o
+                Ubuntu
+                Software e pesquise por Spotify.</p>
 
-        <h2>Install via command line</h2>
-        <h3>Snap</h3>
-        <p>Se você não tem acesso ou não quer usar o Ubuntu Software, é possível
-            instalar o Spotify a partir da linha de comando com snap. Execute o seguinte comando no seu terminal:
+            <h2>Install via command line</h2>
+            <h3 class="h3-download">Snap</h3>
+            <p>Se você não tem acesso ou não quer usar o Ubuntu Software, é possível
+                instalar o Spotify a partir da linha de comando com snap. Execute o seguinte comando no seu
+                terminal:
 
-        <pre class="code">snap install spotify</pre>
+            <pre class="code">snap install spotify</pre>
 
-        Se você executar outra distribuição Linux diferente do Ubuntu, primeiro consulte https://snapcraft.io/ para saber como instalar o snap e, em seguida,
-execute o comando acima.
-        </p>
+            Se você executar outra distribuição Linux diferente do Ubuntu, primeiro consulte
+            https://snapcraft.io/ para
+            saber como instalar o snap e, em seguida,
+            execute o comando acima.
+            </p>
 
-        <h3>Debian / Ubuntu</h3>
-        <p>O Spotify para Linux também é lançado como um pacote Debian. Nosso objetivo é que ele funcione com a versão mais recente do Long
-            Term Support do Ubuntu, mas tentaremos fazê-lo funcionar para outras versões do Ubuntu e Debian também.
-            <br>
-            <br>
-            Primeiro, você precisará configurar nosso repositório Debian:        
+            <h3 class="h3-download">Debian / Ubuntu</h3>
+            <p>O Spotify para Linux também é lançado como um pacote Debian. Nosso objetivo é que ele funcione
+                com a
+                versão mais recente do Long
+                Term Support do Ubuntu, mas tentaremos fazê-lo funcionar para outras versões do Ubuntu e Debian
+                também.
+                <br>
+                <br>
+                Primeiro, você precisará configurar nosso repositório Debian:
             <pre class="code">curl -sS https://download.spotify.com/debian/pubkey_6224F9941A8AA6D1.gpg | sudo gpg --dearmor --yes -o /etc/apt/trusted.gpg.d/spotify.gpg
 echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
             </pre>
 
-        <br>
-        Então você pode instalar o cliente Spotify:
-        <pre class="code">sudo apt-get update && sudo apt-get install spotify-client</pre>
+            <br>
+            Então você pode instalar o cliente Spotify:
+            <pre class="code">sudo apt-get update && sudo apt-get install spotify-client</pre>
 
-        </p>
+            </p>
+        </div>
     </div>
-    
+
     <footer>
         <div class="container">
             <div class="row">
@@ -116,28 +126,28 @@ echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sou
                 <div class="col-md-2">
                     <h4>company</h4>
                     <ul class="navbar-nav">
-                    <li> <a href=""> Sobre</a></li>
-                    <li> <a href=""> Empregos</a></li>
-                    <li> <a href=""> Imprensa</a></li>
-                    <li> <a href=""> Novidades</a></li>
+                        <li> <a href=""> Sobre</a></li>
+                        <li> <a href=""> Empregos</a></li>
+                        <li> <a href=""> Imprensa</a></li>
+                        <li> <a href=""> Novidades</a></li>
                     </ul>
                 </div>
                 <div class="col-md-2">
                     <h4>comunidades</h4>
                     <ul class="navbar-nav">
-                    <li> <a href=""> Artistas</a></li>
-                    <li> <a href=""> Desenvolvedores</a></li>
-                    <li> <a href=""> Marcas</a></li>
-                    <li> <a href=""> Marketing</a></li>
+                        <li> <a href=""> Artistas</a></li>
+                        <li> <a href=""> Desenvolvedores</a></li>
+                        <li> <a href=""> Marcas</a></li>
+                        <li> <a href=""> Marketing</a></li>
                     </ul>
                 </div>
                 <div class="col-md-2">
                     <h4>Links uteis</h4>
                     <ul class="navbar-nav">
-                    <li> <a href=""> Ajuda</a></li>
-                    <li> <a href=""> Presentes</a></li>
-                    <li> <a href=""> Player da web</a></li>
-                    <li> <a href=""> Gift cards</a></li>
+                        <li> <a href=""> Ajuda</a></li>
+                        <li> <a href=""> Presentes</a></li>
+                        <li> <a href=""> Player da web</a></li>
+                        <li> <a href=""> Gift cards</a></li>
                     </ul>
                 </div>
                 <div class="col-md-4">

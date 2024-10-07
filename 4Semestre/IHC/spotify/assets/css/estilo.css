@@ -233,3 +233,25 @@ h3 {
 	margin: 10px;
   }
   
+.content-box {
+    background-color: #8f08c48e;
+	color: white;
+	box-shadow: 10px 10px 10px 10px rgba(5, 5, 5, 0.137);
+	text-align: center;
+	width: 1300px;
+}
+
+.flex-box {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.h3-download{
+	color:#53174a;
+}
+
+.a-download{
+	color:#291753;
+	text-decoration: underline;
+}

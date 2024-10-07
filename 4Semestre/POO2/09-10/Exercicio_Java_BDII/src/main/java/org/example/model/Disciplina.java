@@ -1,39 +1,37 @@
 package org.example.model;
 
 public class Disciplina {
-    private int disciplina;
+    private int disciplinaID;
     private String nome;
 
     public Disciplina(){
-        disciplina = 0;
-        nome = "default";
+
+    }
+    public Disciplina(int id , String name){
+        disciplinaID = id;
+        nome = name;
     }
 
-    public Disciplina(int id, String name){
-        disciplina = id;
-        nome = name;
+    public int getDisciplinaID() {
+        return disciplinaID;
+    }
+
+    public void setDisciplinaID(int disciplinaID) {
+        this.disciplinaID = disciplinaID;
     }
 
     public String getNome() {
         return nome;
     }
 
-    public int getDisciplina() {
-        return disciplina;
-    }
-
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public void setDisciplina(int disciplina) {
-        this.disciplina = disciplina;
     }
 
     @Override
     public String toString() {
         return "Disciplina{" +
-                "disciplina=" + disciplina +
+                "disciplina=" + disciplinaID +
                 ", nome='" + nome + '\'' +
                 '}';
     }

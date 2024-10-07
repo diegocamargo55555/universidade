@@ -25,7 +25,7 @@ public class EstudanteDBDAO implements EstudanteDAO, IConst {
 
     public void insere(Estudante estudante) throws SQLException {
         open();
-        sql = "INSERT INTO estudante(estudante_ID, nome, idade) VALUES(???)";
+        sql = "INSERT INTO estudante(estudante_ID, nome, idade) VALUES(?,?,?)";
         statement = connection.prepareStatement(sql);
         statement.setInt(1, estudante.getEstudanteID());
         statement.setString(2, estudante.getNome());
@@ -81,7 +81,7 @@ public class EstudanteDBDAO implements EstudanteDAO, IConst {
 
     public List<Estudante> listaTodos() throws SQLException {
         open();
-        sql = "SELECT * GROM estudante";
+        sql = "SELECT * FROM estudante";
         statement = connection.prepareStatement(sql);
         result = statement.executeQuery();
         ArrayList<Estudante> estudantes = new ArrayList<>();
