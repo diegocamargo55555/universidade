@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form id="meuFormulario">
+
+        <label for="numero_lb">numero:</label>
+        <input type="int" name="numero" id="numero">
+        <label for="numero_lb2">numero:</label>
+        <input type="int" name="numero" id="numero2">
+
+        <button type="submit">Enviar</button>
+    </form>
+
+
+
+        <script>
+            const formulario = document.getElementById('meuFormulario');
+            formulario.addEventListener('submit', function () {
+
+                const numero = document.getElementById('numero').value;
+                const numero2 = document.getElementById('numero2').value;
+
+                
+                if (numero > numero2) {
+                    alert(numero);
+                }
+                if (numero2 > numero) {
+                    alert(numero2);
+                } 
+                if (numero === numero2) {
+                    alert("Os numeros são iguais")
+                }
+                
+                
+            
+            });
+
+        </script>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+
+    <button onclick="myfunc()">start</button>
+    <script>
+
+        function myfunc() {
+            const v = [];
+            let sum =0;
+
+            let x = prompt("Enter a Value", "");
+
+            while (Boolean(x !== null)) {
+                v.push(parseInt(x));
+                x = prompt("Enter a Value", "");
+            }
+            qnt = v.length
+
+            for (let i = 0; i < qnt; i++) {
+                sum += v[i];
+            }
+
+            alert(sum/qnt);
+
+        }
+
+    </script>
+</body>
+
+</html>

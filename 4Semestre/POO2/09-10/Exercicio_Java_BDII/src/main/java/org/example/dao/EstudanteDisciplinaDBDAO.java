@@ -23,29 +23,29 @@ public class EstudanteDisciplinaDBDAO implements EstudanteDisciplinaDAO, IConst{
         open();
         sql = "INSERT INTO estudante_disciplina(estudante_id, disciplinaid) VALUES(?,?)";
         statement = connection.prepareStatement(sql);
-        statement.setInt(1, estudanteDisciplina.getEstudante().getEstudanteID());
-        statement.setInt(2, estudanteDisciplina.getDisciplina().getDisciplinaID());
+        statement.setInt(1, estudanteDisciplina.getEstudante().getEstudanteId());
+        statement.setInt(2, estudanteDisciplina.getDisciplina().getDisciplinaId());
         statement.executeUpdate();
-        close();
+       close();
     }
 
     public void atualiza(EstudanteDisciplina estudanteDisciplina) throws SQLException {
         open();
         sql = "UPDATE estudante_disciplina SET disciplinaid = ? WHERE estudante_id = ?";
         statement = connection.prepareStatement(sql);
-        statement.setInt(1, estudanteDisciplina.getDisciplina().getDisciplinaID());
-        statement.setInt(2, estudanteDisciplina.getEstudante().getEstudanteID());
+        statement.setInt(1, estudanteDisciplina.getDisciplina().getDisciplinaId());
+        statement.setInt(2, estudanteDisciplina.getEstudante().getEstudanteId());
         statement.executeUpdate();
         close();
     }
 
     public void remove(EstudanteDisciplina estudanteDisciplina) throws SQLException {
-        open();
-        sql = "DELETE FROM estudante_disciplina WHERE estudante_id = ?";
-        statement = connection.prepareStatement(sql);
-        statement.setInt(1, estudanteDisciplina.getEstudante().getEstudanteID());
-        statement.executeUpdate();
-        close();
+       open();
+       sql = "DELETE FROM estudante_disciplina WHERE estudante_id = ?";
+       statement = connection.prepareStatement(sql);
+       statement.setInt(1, estudanteDisciplina.getEstudante().getEstudanteId());
+       statement.executeUpdate();
+       close();
     }
 
     public EstudanteDisciplina buscaIndividual(int estudanteId, int disciplinaID) throws SQLException{

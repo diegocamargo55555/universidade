@@ -10,14 +10,13 @@ import org.example.model.Estudante;
 import org.example.model.EstudanteDisciplina;
 
 public class Main {
-
     public static void main(String[] args) throws SQLException {
-        Estudante estudante = new Estudante(1, "Andre", 22);
+        Estudante estudante = new Estudante(1, "André", 22);
         EstudanteDBDAO estudanteDAO = new EstudanteDBDAO();
 
-        System.out.println("######### Opera��es sobre a tabela Estudante ###########");
+        System.out.println("######### Operações sobre a tabela Estudante ###########");
 
-        System.out.println("Insere o estudante Andr�:");
+        System.out.println("Insere o estudante André:");
         estudanteDAO.insere(estudante);
 
         System.out.println("Lista os estudantes no banco:");
@@ -25,8 +24,8 @@ public class Main {
         //automaticamente.
         System.out.println(estudanteDAO.listaTodos());
 
-        System.out.println("Muda o nome de Andr� para Andr� Galv�o e idade de 22 para 17:");
-        Estudante estudante01 = new Estudante(1, "Andr� Galv�o", 17);
+        System.out.println("Muda o nome de André para André Galvão e idade de 22 para 17:");
+        Estudante estudante01 = new Estudante(1, "André Galvão", 17);
         estudanteDAO.atualiza(estudante01);
 
         System.out.println("Lista os estudantes no banco:");
@@ -55,42 +54,42 @@ public class Main {
         System.out.println("Lista os estudantes no banco:");
         System.out.println(estudanteDAO.listaTodos());
 
-        System.out.println("\n######### Opera��es sobre a tabela Disciplina ###########");
+        System.out.println("\n######### Operações sobre a tabela Disciplina ###########");
 
         Disciplina disciplina = new Disciplina(1, "Matem�tica");
         DisciplinaDBDAO disciplinaDAO = new DisciplinaDBDAO();
 
-        System.out.println("Insere a disciplina Matem�tica:");
+        System.out.println("Insere a disciplina Matemática:");
         disciplinaDAO.insere(disciplina);
 
         System.out.println("Lista as disciplinas no banco:");
         System.out.println(disciplinaDAO.listaTodos());
 
-        System.out.println("Muda o nome de Matem�tica para C�lculo I:");
-        Disciplina disciplina01 = new Disciplina("C�lculo I", 1);
+        System.out.println("Muda o nome de Matem�tica para Cálculo I:");
+        Disciplina disciplina01 = new Disciplina(1, "Cálculo I");
         disciplinaDAO.atualiza(disciplina01);
 
         System.out.println("Lista as disciplinas no banco:");
         System.out.println(disciplinaDAO.listaTodos());
 
-        System.out.println("Insere a disciplina Portugu�s:");
-        Disciplina disciplina02 = new Disciplina(2, "Portugu�s");
+        System.out.println("Insere a disciplina Português:");
+        Disciplina disciplina02 = new Disciplina(2, "Português");
         disciplinaDAO.insere(disciplina02);
 
         System.out.println("Lista as disciplinas no banco:");
         System.out.println(disciplinaDAO.listaTodos());
 
         System.out.println("Insere a disciplina Ingl�s:");
-        Disciplina disciplina03 = new Disciplina(3, "Ingl�s");
+        Disciplina disciplina03 = new Disciplina(3, "Inglês");
         disciplinaDAO.insere(disciplina03);
 
         System.out.println("Lista as disciplinas no banco:");
         System.out.println(disciplinaDAO.listaTodos());
 
-        System.out.println("Retorna a disciplina Portugu�s:");
+        System.out.println("Retorna a disciplina Português:");
         System.out.println(disciplinaDAO.buscaPorCodigo(2));
 
-        System.out.println("Remove a disciplina Portugu�s:");
+        System.out.println("Remove a disciplina Português:");
         disciplinaDAO.remove(disciplinaDAO.buscaPorCodigo(2));
 
         System.out.println("Lista as disciplinas no banco:");
