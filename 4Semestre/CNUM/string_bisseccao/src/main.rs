@@ -3,6 +3,7 @@ mod sum_sub;
 mod mul_div;
 use crate::sum_sub::soma_sub;
 use crate::mul_div::mult_div;
+//use crate::exp::expo;
 
 
 fn main() {
@@ -10,15 +11,8 @@ fn main() {
     //let mut eq2: String = String::from("$55*-3 $");
 
     
-    let mut eq2 = String::from("$x * 2 * 3 / 77 - 3* 99 *5 +23 +56$");
+    let mut eq2 = String::from("$x * 2 * 3 / 77 - 3* 99 *5 +23 +5$"); // causa bug 23 +x (x = -2)
     //let mut eq2 = String::from("$78 +54 -99 - 55 -45 +15 $");
-
-
-    // Causa  bug
-    //-2 * 2 * 3 * 77 - 3* 99 *5 +23 +56
-    // 7 * -2
-    // -7 * -2 
-
     
     
     //let eq3 = String::from("$x * 3 + 2$");
@@ -28,6 +22,8 @@ fn main() {
     println!("eq inicial: {}", eq2);
     eqs = eqs.replace("x", &x);
 
+
+    //eqs = exp(eqs);
     eqs = mult_div(eqs);
     
 

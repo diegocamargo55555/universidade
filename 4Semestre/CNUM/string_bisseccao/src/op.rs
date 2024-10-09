@@ -19,14 +19,12 @@ pub fn operacao(ch: char, n1: f64, n2: f64) -> f64 {
     return 0.0;
 }
 
-
 pub fn do_sum_sub(mut eqs: String, v: &Vec<usize>) -> String
 {
     let (s1, s2,n2, resultado, sinal,);
     let sinal_posi:usize;
     let n1: f64;
     let td_posicoes = get_all(eqs.clone());
-
 
     if &eqs[1..2] == "-" {
         sinal = eqs.chars().nth(v[2]).unwrap();
@@ -41,12 +39,14 @@ pub fn do_sum_sub(mut eqs: String, v: &Vec<usize>) -> String
         s2 = &eqs[sinal_posi + 1..td_posicoes[next_sinal]];
         n2 = s2.parse().unwrap();
 
+
+
+
         resultado = operacao(sinal, n1, n2);   
 
         let resultado_str = resultado.to_string();
 
         eqs.replace_range(td_posicoes[antes_sinal]..td_posicoes[next_sinal] , &resultado_str); //
-
         return eqs;
     }
     else 
@@ -103,5 +103,3 @@ pub fn get_all(eqs: String) -> Vec<usize> {
 
     return v;
 }
-
-    

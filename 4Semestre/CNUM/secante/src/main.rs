@@ -5,8 +5,8 @@ fn main() {
 }
 
 fn secante() -> i32 {
-    let (mut x0, mut x1, mut precisao , mut k ) =(0.0, 1.0, 0.01, 100 );
-    let mut x2 = 0.0;
+    let (mut x0, mut x1, precisao , mut k ) =(0.0, 1.0, 0.01, 100 );
+    let mut x2 ;
     
     if modulo(funcao(x0)) < precisao{
         println!("fim:{}", x0);
@@ -54,5 +54,5 @@ fn modulo(a: f64 ) -> f64{
 }
 
 fn funcao(x: f64) -> f64{
-    return x.powf(3.0) - 0.5;
+    return x.powf(3.0) - 9.0*x +3.0;
 }
