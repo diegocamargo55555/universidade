@@ -46,7 +46,7 @@ public class MenusController {
     @FXML
     void alteraOnAction(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/exemplo/curso1/view/TelaVazia.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/exemplo/curso1/view/telaVazia.fxml"));
             Parent root = loader.load();
             Stage newStage = new Stage();
             Scene newScene = new Scene(root);
@@ -62,7 +62,7 @@ public class MenusController {
     @FXML
     private void telaVaziaOnAction(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/exemplo/curso1/view/TelaVazia.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/exemplo/curso1/view/telaVazia.fxml"));
             Parent root = loader.load();
             Stage newStage = new Stage();
             Scene newScene = new Scene(root);
