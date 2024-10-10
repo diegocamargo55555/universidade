@@ -15,15 +15,15 @@ pub fn operacao(ch: char, n1: f64, n2: f64) -> f64 {
     }
     else if ch == '/' {
         return  n1 / n2;
+    }else if ch == '^' {
+        return n1.powf(n2);
     }
     return 0.0;
 }
 
 pub fn do_sum_sub(mut eqs: String, v: &Vec<usize>) -> String
 {
-    let (s1, s2,n2, resultado, sinal,);
-    let sinal_posi:usize;
-    let n1: f64;
+    let (s1, s2, n2, resultado, sinal, sinal_posi, n1);
     let td_posicoes = get_all(eqs.clone());
 
     if &eqs[1..2] == "-" {
@@ -74,7 +74,7 @@ pub fn do_sum_sub(mut eqs: String, v: &Vec<usize>) -> String
 }
 
 pub fn get_all(eqs: String) -> Vec<usize> {
-    let (mut mult2, mut div2, cifrao, mut menos2, mut mais2) = (98, 98, 0, 98, 98);
+    let (mut mult2, mut div2, cifrao, mut menos2, mut mais2, mut exp2) = (98, 98, 0, 98, 98, 98);
     let (mult,  div, menos, mais);
     let cifrao2: usize = eqs.len() - 1; // pega a ultima posição do vetor
 
@@ -98,7 +98,12 @@ pub fn get_all(eqs: String) -> Vec<usize> {
         div2 = eqs[div + 1..].chars().position(|c| c == '*').unwrap_or(99)+ div + 1;
     }
 
-    let mut v: Vec<usize> = vec![cifrao, mult, mult2,  div, div2, cifrao2, mais, menos, mais2, menos2];
+    let exp= eqs.chars().position(|c| c == '^').unwrap_or(99);
+    if exp != 99 {
+        exp2 = eqs[exp + 1..].chars().position(|c| c == '*').unwrap_or(99) + exp + 1;
+    }
+
+    let mut v: Vec<usize> = vec![cifrao, mult, mult2,  div, div2, cifrao2, mais, menos, mais2, menos2, exp, exp2];
     v.sort();
 
     return v;

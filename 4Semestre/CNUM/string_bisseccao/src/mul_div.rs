@@ -1,5 +1,3 @@
-use core::f64;
-
 use crate::op::get_all;
 use crate::op::operacao;
 use crate::op::remove_whitespace;
@@ -45,9 +43,7 @@ pub fn mult_div(mut eqs: String) -> String {
 }
 
 pub fn do_mult_div(mut eqs: String, v: &Vec<usize>) -> String {
-    let (s1, s2, n2, resultado, sinal);
-    let sinal_posi: usize;
-    let n1: f64;
+    let (s1, s2, n2, resultado, sinal, sinal_posi, n1);
     let td_posicoes = get_all(eqs.clone());
 
     sinal = eqs.chars().nth(v[1]).unwrap();
@@ -56,10 +52,6 @@ pub fn do_mult_div(mut eqs: String, v: &Vec<usize>) -> String {
     let next_sinal: usize = td_posicoes.iter().position(|n| n == &sinal_posi).unwrap() + 1;
 
     //pega os numeros que serão usados na operação
-
-//55*3 +5 *2*5+6
-//55*-3
-
     println!("td_posicoes:{:?} \nantes: {} \nsinal: {}",td_posicoes, antes_sinal, sinal_posi);
     println!("s1:{}", &eqs[td_posicoes[antes_sinal]+1..sinal_posi]);
     s1 = &eqs[td_posicoes[antes_sinal]+1..sinal_posi];
@@ -72,7 +64,6 @@ pub fn do_mult_div(mut eqs: String, v: &Vec<usize>) -> String {
         s2 = &eqs[sinal_posi + 1..td_posicoes[next_sinal]];
     }
 
-    //55*-3
     println!("s2:{}", &eqs[sinal_posi + 1..td_posicoes[next_sinal]]);
     n2 = s2.parse().unwrap();
 
