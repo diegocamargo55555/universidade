@@ -1,4 +1,8 @@
 use std::usize;
+use crate::exp_main;
+use crate::mult_div;
+use crate::soma_sub;
+
 
 pub fn remove_whitespace(s: &str) -> String {
     s.chars().filter(|c| !c.is_whitespace()).collect()
@@ -38,9 +42,6 @@ pub fn do_sum_sub(mut eqs: String, v: &Vec<usize>) -> String
 
         s2 = &eqs[sinal_posi + 1..td_posicoes[next_sinal]];
         n2 = s2.parse().unwrap();
-
-
-
 
         resultado = operacao(sinal, n1, n2);   
 
@@ -107,4 +108,17 @@ pub fn get_all(eqs: String) -> Vec<usize> {
     v.sort();
 
     return v;
+}
+
+pub fn do_eq(mut eqs: String) -> String{
+    eqs = exp_main(eqs.clone());
+    println!("\nEXP: {}", eqs);
+
+    eqs = mult_div(eqs.clone());
+
+    println!("\nsoma: {}", eqs);
+    soma_sub(eqs.clone());
+
+    return eqs;
+
 }

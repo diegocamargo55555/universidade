@@ -45,10 +45,16 @@ pub fn do_exp(mut eqs: String, v: &Vec<usize>) -> String {
     let antes_sinal: usize = td_posicoes.iter().position(|n| n == &sinal_posi).unwrap() - 1;
     let next_sinal: usize = td_posicoes.iter().position(|n| n == &sinal_posi).unwrap() + 1;
 
-    //pega os numeros que serão usados na operação
-    s1 = &eqs[td_posicoes[antes_sinal]+1..sinal_posi];
-    n1 = s1.parse().unwrap();
+    //pega os numeros que serão usados na operação         "$-9^2$"
+    println!("a:{}", &eqs[td_posicoes[antes_sinal]..sinal_posi]);
 
+    if &eqs[td_posicoes[antes_sinal].. antes_sinal+1] == "-" {
+        s1 = &eqs[td_posicoes[antes_sinal]..sinal_posi];
+        n1 = s1.parse().unwrap();
+    }else {
+        s1 = &eqs[td_posicoes[antes_sinal]+1..sinal_posi];
+        n1 = s1.parse().unwrap();
+    }
 
     if &eqs[sinal_posi + 1..td_posicoes[next_sinal]]=="" {
         s2 = &eqs[sinal_posi + 1..td_posicoes[next_sinal+1]];
@@ -59,19 +65,36 @@ pub fn do_exp(mut eqs: String, v: &Vec<usize>) -> String {
     n2 = s2.parse().unwrap();
 
     resultado = operacao(sinal, n1, n2);
+
+    println!("resultado {}", resultado);
     let resultado_str = resultado.to_string();
 
-    if &eqs[sinal_posi + 1..td_posicoes[next_sinal]]=="" {
-        eqs.replace_range(
-            td_posicoes[antes_sinal]+1..td_posicoes[next_sinal+1],
-            &resultado_str,
-        ); //
-        }else {
-        eqs.replace_range(
-            td_posicoes[antes_sinal]+1..td_posicoes[next_sinal],
-            &resultado_str,
-        ); //
-        }
+    if &eqs[td_posicoes[antes_sinal].. antes_sinal+1] == "-" {
+        if &eqs[sinal_posi + 1..td_posicoes[next_sinal]]=="" {
+            eqs.replace_range(
+                td_posicoes[antes_sinal]..td_posicoes[next_sinal+1],
+                &resultado_str,
+            );
+            }else {
+            eqs.replace_range(
+                td_posicoes[antes_sinal]..td_posicoes[next_sinal],
+                &resultado_str,
+            );}
+    }else {
+        if &eqs[sinal_posi + 1..td_posicoes[next_sinal]]=="" {
+            eqs.replace_range(
+                td_posicoes[antes_sinal]+1..td_posicoes[next_sinal+1],
+                &resultado_str,
+            );
+            }else {
+            eqs.replace_range(
+                td_posicoes[antes_sinal]+1..td_posicoes[next_sinal],
+                &resultado_str,
+            ); 
+            }
+    
+    }
+
 
     return eqs;
 }
