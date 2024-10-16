@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <button onclick="myfunc()">start</button>
+    <script>
+
+        function myfunc() {
+// 5*4 *3*2*1
+            let x = prompt("Enter a Value", "");
+            
+            x = parseInt(x)
+
+            for (let i = x-1; i > 0; i--) {
+                x *= (x-i);
+                console.log(x);
+            }
+        }
+
+    </script>
+</body>
+
+</html>
