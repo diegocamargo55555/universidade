@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <button onclick="myfunc()">click para ver o maior numero</button>
+    <p id="resultado"></p>
+
+    <script>
+
+        function myfunc() {
+            const v = [3, 2, 4, 5, 1];
+
+            let maiorNumero = Math.max(...v);
+            alert("O maior número do vetor é: " + maiorNumero);
+            
+        }
+
+    </script>
+</body>
+
+</html>

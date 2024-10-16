@@ -16,19 +16,23 @@
 
         function myfunc() {
 
-            const matrix = [ [1,2],[3,4],[5,6] ];
+            const matrix = [[1, 2], [3, 4], [5, 6]];
             let sum = 0;
-            
-            for (let i = 0; i < matrix.length-1; i++) {
-                for (let j = 0; j < matrix.length-1; j++) {
-                    
+            let qnt = 0;
+
+
+            for (let i = 0; i < matrix.length; i++) {
+                for (let j = 0; j < matrix[i].length; j++) {
                     sum += matrix[i][j];
+                    qnt++;
                 }
             }
-            
-            
-            alert(sum);
-            
+            let media = sum / qnt;
+
+
+
+            alert(media);
+
 
 
         }

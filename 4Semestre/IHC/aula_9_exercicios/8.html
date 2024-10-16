@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <input type="number" id="numero" min="0">
+    <button onclick="myfunc()">escolha um numero de 1 a 3</button>
+    <p id="resultado"></p>
+
+    <script>
+
+        function myfunc() {
+
+            const num = parseInt(document.getElementById("numero").value);
+
+
+            if (num === 1) {
+                alert("Opção 1 escolhida");
+            }else if (num === 2) {
+                alert("Opção 2 escolhida");
+            }else if (num === 3) {
+                alert("Opção 3 escolhida");
+            }else {
+                alert("Opção inválida");
+            }
+
+        }
+
+    </script>
+</body>
+
+</html>

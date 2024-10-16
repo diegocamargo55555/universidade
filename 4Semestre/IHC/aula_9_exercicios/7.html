@@ -9,19 +9,24 @@
 
 <body>
 
-    <button onclick="myfunc()">start</button>
+    <input type="number" id="numero" min="0">
+    <button onclick="myfunc()">Calcular Fatorial</button>
+    <p id="resultado"></p>
+
     <script>
 
         function myfunc() {
-// 5*4 *3*2*1
-            let x = prompt("Enter a Value", "");
-            
-            x = parseInt(x)
+            // 5*4 *3*2*1
+            const numero = parseInt(document.getElementById("numero").value);
+            let fatorial = 1;
 
-            for (let i = x-1; i > 0; i--) {
-                x *= (x-i);
-                console.log(x);
+
+
+            for (let i = 1; i <= numero; i++) {
+                fatorial *= i;
             }
+            
+            alert(fatorial);
         }
 
     </script>
