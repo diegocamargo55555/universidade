@@ -13,7 +13,7 @@ fn regular() -> i32{
         println!("1esta entre: {}  ,  {}", a, b);
         return 0 ;
     }
-    if modulo(funcao(a)) < precisao2 {
+    if modulo(funcao(a)) < precisao2 || modulo(funcao(b)) < precisao2{
         println!("2escolha entre: {}  ,  {}", a, b);
         return 0 ;
     }
@@ -26,17 +26,22 @@ fn regular() -> i32{
         t1 = a*funcao(b) - b*funcao(a);
         t2 = funcao(b) - funcao(a);
         x = t1 / t2  ;
+        println!("{}",x);
+
+
+
 
         if modulo(funcao(a)) < precisao2 || k > 100 {
             println!("3x: {}", x);
             return 0;
         }
 
-        if media* funcao(x) > 0 {
-            
+        if media* funcao(x) > 0.0 {
+            a = x;
+        }else {
+            b = x;
         }
 
-        b = x;
 
         if modulo(b-a) < precisao1 {
             println!("4esta entre: {}  ,  {}", a, b);
