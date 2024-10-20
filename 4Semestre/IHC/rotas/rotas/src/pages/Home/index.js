@@ -7,16 +7,28 @@ import { Div } from "./styles";
 function home() {
     return (
 
-        <Div>
+        <div>
             <Title> Bem vindo à página HOME</Title>
 
-            <br />
-            <Link to='/sobre'>Sobre</Link>
-            <br />
-            <Link to='/contato'>Contato</Link>
+            <Div>
 
-        
-        </Div>
+
+                <p>dadwadawd </p>
+
+                <br />
+                <Link to='/sobre'>Sobre</Link>
+                <br />
+                <Link to='/contato'>Contato</Link>
+
+            </Div>
+
+
+
+
+
+
+        </div>
+
     )
 }
 
