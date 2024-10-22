@@ -15,7 +15,7 @@ function home() {
 
                 <p>dadwadawd </p>
 
-                <br />
+                <br/>
                 <Link to='/sobre'>Sobre</Link>
                 <br />
                 <Link to='/contato'>Contato</Link>
