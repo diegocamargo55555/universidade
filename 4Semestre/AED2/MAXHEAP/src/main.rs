@@ -1,6 +1,6 @@
 fn organiza(v: &mut Vec<i32>, n: usize, i:usize){
     if i > 0 {
-        let pai = ((i-1) / 2) as usize;
+        let pai = (i-1) / 2 ;
         let temp ;
     
         if v[pai] > 0 {
@@ -15,9 +15,13 @@ fn organiza(v: &mut Vec<i32>, n: usize, i:usize){
 }
 
 fn insere(v: &mut Vec<i32>, valor: i32){
+
     v.push(valor);
+    println!("\n--v:{:?}", v);
+
     let n = v.len();
     organiza(v, n, n-1);
+    println!("v:{:?}", v);
 }
 
 
@@ -30,6 +34,4 @@ fn main() { // 8, 1 , 19 ,7, 73, 35
     insere(&mut v, 7);
     insere(&mut v, 73);
     insere(&mut v, 35);
-
-    println!("v:{:?}", v);
 }
