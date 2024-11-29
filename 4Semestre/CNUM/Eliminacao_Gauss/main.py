@@ -24,7 +24,7 @@ def print_matriz(linha, col, matrix):
 # APENAS PARA TESTES
 linha = int(3)
 col = linha+1
-matrix = [[3,2,1,6], [4,5,6,8], [9,8,11,9]]
+matrix = np.array([[3,2,1,6], [4,5,6,8], [9,8,11,9]])
 
 #linha = int(3)
 #col = int(3)
@@ -44,6 +44,16 @@ for i in range(linha-1):
         if l+1 >= linha:
             print("break")
             break
+        
+        if matrix[i][i] == 0:
+            ii = i
+            for _ in range(linha - i):
+                ii += 1
+                if matrix[i][i] != 0:
+                    matrix [[i,ii]] = matrix[[ii,i]]
+                    break
+                    
+                    
         m = matrix[l+1][i] / matrix[i][i]
         print("m = ", matrix[l+1][i], "/",matrix[i][i] , "\nm: ",m)
 
