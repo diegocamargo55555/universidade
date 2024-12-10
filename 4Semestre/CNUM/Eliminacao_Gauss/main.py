@@ -10,34 +10,35 @@ def print_matriz(linha, col, matrix):
 def main():
 
 
-    #linha = int(input("insira quantas linhas a matrix terá "))
-    #col = linha+1
-    #matrix = []
-    #print("insira o valor de:")   
-    #for l in range(linha):    #3 1 4 5
-    #    a = []
-    #    for c in range(col):
-    #        a.append(float(input("A{}{}: " .format(l+1, c+1))))
-    #    matrix.append(a)
-    #
-
-    # APENAS PARA TESTES
-    linha = int(3)
+    linha = int(input("insira quantas linhas a matrix terá "))
     col = linha+1
-    matrix = np.array([[0,2,1,6], [4,5,6,8], [9,8,11,9]], dtype=np.longdouble)
-
+    matrix = []
+    print("insira o valor de:")   
+    for l in range(linha):    #3 1 4 5
+        a = []
+        for c in range(col):
+            a.append(float(input("A{}{}: " .format(l+1, c+1))))
+        matrix.append(a)
+    
+    matrix = np.array(matrix, dtype=np.longdouble)
+    
+    # APENAS PARA TESTES
     #linha = int(3)
     #col = linha+1
-    #matrix = [[3,2,1], [4,5,6], [9,8,11], [11,22,35]]
+    #matrix = np.array([[0,2,1,6], [4,5,6,8], [9,8,11,9]], dtype=np.longdouble)
+    
+    #linha = int(3)
+    #col = linha+1
+    #matrix = [[3,2,1,9], [4,5,6,1], [9,8,11,15], [11,22,35,55]]
 
     mat = np.array(matrix[:, :-1], dtype=np.double)
     det = np.linalg.det(mat) 
     print("determinante = ", det)
 
-    #if det == 0: 
-    #    print("nao é possivel resolver sistemas de equações lineares co metodo de Gauss")
-    #    return 0
-    #
+    if det == 0: 
+        print("nao é possivel resolver sistemas de equações lineares co metodo de Gauss")
+        return 0
+    
     for i in range(linha-1): 
         print("\n\n iteração", i)
         print_matriz(linha, col, matrix)
