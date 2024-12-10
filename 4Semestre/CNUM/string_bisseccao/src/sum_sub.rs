@@ -1,12 +1,22 @@
 use crate::op::do_sum_sub;
 use crate::op::remove_whitespace;
 
-pub fn soma_sub(mut eqs: String) {
+pub fn soma_sub(mut eqs: String) -> String{
+
+    eqs = eqs.replace("++", "+");
+    eqs = eqs.replace("-+", "-");
+    eqs = eqs.replace("+-", "-");
+    eqs = eqs.replace("--", "-");
+
+
     let mut repet = eqs.chars().filter(|c| *c == '-').count();
     repet += eqs.chars().filter(|c| *c == '+').count();
+    if &eqs[0..2] == "$-" || &eqs[0..2] == "$+"{
+        repet -= 1;
+    }
 
     for i in 0..repet {
-        if repet - i != 1 || &eqs[0..2] != "$-" {
+        //if repet - i != 1 || &eqs[0..2] != "$-" {
             eqs = remove_whitespace(&mut eqs);
             println!("--------\ninicio: {}", eqs);
 
@@ -16,8 +26,9 @@ pub fn soma_sub(mut eqs: String) {
             eqs = do_sum_sub(eqs.clone(), &v);
 
             println!("fim: {}", eqs);
-        }
+        //}
     }
+    return eqs;
 }
 
 pub fn posi_sum_sub(eqs: String) -> Vec<usize> {
