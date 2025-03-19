@@ -6,8 +6,10 @@ fn main() {
     // File hosts.txt must exist in the current path
     if let Ok(lines) = read_lines("/home/heilt/Documents/universidade/5Semestre/Pesquisa_OP/read_file/src/esqueci.txt") {
         // Consumes the iterator, returns an (Optional) String
+        let mut x = 1;
         for line in lines.map_while(Result::ok) {
-            println!("{}", line);
+            println!("eq:{} {}",x, line);
+            x = x+1;
         }
     }
 }
