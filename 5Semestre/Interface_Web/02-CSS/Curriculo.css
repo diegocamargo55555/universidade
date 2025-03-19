@@ -1,0 +1,26 @@
+body{
+    background-color: rgb(224, 241, 255);
+}
+
+#titulo{
+    text-align: center;
+    color: darkblue;
+    text-transform: capitalize;
+    font-size: 40px;
+}
+
+.titulo2{
+    text-indent: 80px;
+    color: blueviolet;
+    font-size: 30px;
+    text-transform: capitalize;
+    font-style: oblique;
+
+}
+
+.list{
+    text-transform: initial;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    
+}
+
