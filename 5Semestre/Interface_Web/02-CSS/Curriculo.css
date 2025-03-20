@@ -1,5 +1,6 @@
 body{
     background-color: rgb(224, 241, 255);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 #titulo{
@@ -14,13 +15,9 @@ body{
     color: blueviolet;
     font-size: 30px;
     text-transform: capitalize;
-    font-style: oblique;
-
 }
 
-.list{
-    text-transform: initial;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    
+li{
+    text-transform: capitalize;    
 }
 
