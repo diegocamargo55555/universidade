@@ -1,13 +1,16 @@
 use std::fs::File;
 use std::io::{self, BufRead};
 use std::path::Path;
+mod tratar_linha;
+use tratar_linha::tirarX;
 
 fn main() {
     // File hosts.txt must exist in the current path
-    if let Ok(lines) = read_lines("/home/heilt/Documents/universidade/5Semestre/Pesquisa_OP/read_file/src/esqueci.txt") {
+    if let  Ok(lines) = read_lines("/home/heilt/Documents/universidade/5Semestre/Pesquisa_OP/read_file/src/novo.txt") {
         // Consumes the iterator, returns an (Optional) String
         let mut x = 1;
-        for line in lines.map_while(Result::ok) {
+        for mut line in lines.map_while(Result::ok) {
+            line = tirarX(line.clone());
             println!("eq:{} {}",x, line);
             x = x+1;
         }
