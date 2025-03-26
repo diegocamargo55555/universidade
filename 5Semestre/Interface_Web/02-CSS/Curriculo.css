@@ -19,5 +19,14 @@ body{
 
 li{
     text-transform: capitalize;    
+    list-style-type:lower-greek;
 }
 
+a:link{
+    color:rgb(0, 0, 255);
+    background-color: rgb(186, 224, 255);
+}
+a:visited{
+    color: darkblue;
+    background-color: black;
+}
