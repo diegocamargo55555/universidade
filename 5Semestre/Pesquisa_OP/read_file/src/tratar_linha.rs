@@ -45,7 +45,7 @@ pub fn preenchex(){
     let mut number_of_lines: String = String::new();
     reader.read_line(&mut number_of_lines);
 
-    let totalx = contX(number_of_lines.clone());
+    let totalx = contar_x();
     if number_of_lines.contains("max") || number_of_lines.contains("min") {
         
     }
