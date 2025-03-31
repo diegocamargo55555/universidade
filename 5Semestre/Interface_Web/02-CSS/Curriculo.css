@@ -1,6 +1,8 @@
 body{
     background-color: rgb(224, 241, 255);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: justify;
+
 }
 
 #titulo{
@@ -8,6 +10,10 @@ body{
     color: darkblue;
     text-transform: capitalize;
     font-size: 40px;
+    border: 10px double black;
+    box-sizing: content-box;
+
+
 }
 
 .titulo2{
@@ -15,11 +21,17 @@ body{
     color: blueviolet;
     font-size: 30px;
     text-transform: capitalize;
+    
+
 }
 
 li{
     text-transform: capitalize;    
     list-style-type:lower-greek;
+    border: 5px outset black;
+    width:fit-content;
+
+
 }
 
 a:link{
@@ -30,3 +42,5 @@ a:visited{
     color: darkblue;
     background-color: black;
 }
+
+
