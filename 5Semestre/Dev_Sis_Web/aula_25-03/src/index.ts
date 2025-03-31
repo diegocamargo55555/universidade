@@ -1,4 +1,4 @@
-const disciplina : string = "desenvolvimento de sistemas web"
+/*const disciplina : string = "desenvolvimento de sistemas web"
 
 console.log(disciplina)
 
@@ -20,4 +20,16 @@ function minhaFuncao(n1: number, n2: number): number {
     return n1+n2
     
 }
-console.log("O resultado é " + minhaFuncao(5,4))
+console.log("O resultado é " + minhaFuncao(5,4))*/
+
+
+
+
+import Pessoa from "./pessoa";
+
+
+var p1 : Pessoa = new Pessoa("Diego ", 31255674);
+var p2 : Pessoa = new Pessoa("IHWA ", 31255674);
+console.log(p1.nome)
+p2.telefone = 555554444
+console.log(p2.telefone)
