@@ -2,9 +2,17 @@ body{
     background-color: rgb(224, 241, 255);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: justify;
+    background-image: url(/02-CSS/3-imagens/background_curriculo.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
 
 }
 
+img{
+    width: 200px;
+}
 #titulo{
     text-align: center;
     color: darkblue;
@@ -12,8 +20,6 @@ body{
     font-size: 40px;
     border: 10px double black;
     box-sizing: content-box;
-
-
 }
 
 .titulo2{
@@ -21,8 +27,6 @@ body{
     color: blueviolet;
     font-size: 30px;
     text-transform: capitalize;
-    
-
 }
 
 li{
@@ -30,8 +34,6 @@ li{
     list-style-type:lower-greek;
     border: 5px outset black;
     width:fit-content;
-
-
 }
 
 a:link{
@@ -39,7 +41,7 @@ a:link{
     background-color: rgb(186, 224, 255);
 }
 a:visited{
-    color: darkblue;
+    color: red;
     background-color: black;
 }
 
