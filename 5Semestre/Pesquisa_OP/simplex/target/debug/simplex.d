@@ -1,0 +1,1 @@
+/home/heilt/Documents/universidade/5Semestre/Pesquisa_OP/simplex/target/debug/simplex: /home/heilt/Documents/universidade/5Semestre/Pesquisa_OP/simplex/src/main.rs /home/heilt/Documents/universidade/5Semestre/Pesquisa_OP/simplex/src/read_txt.rs

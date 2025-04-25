@@ -1,0 +1,9 @@
+for j = 0 to n
+    for i = j+1 to n
+        if A[j] > A[i]
+        temp = A[j]
+        A[j] = A[i]
+        A[i] = temp
+
+
+
