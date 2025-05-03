@@ -2,18 +2,17 @@ body{
     background-color: rgb(224, 241, 255);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: justify;
-    background-image: url(/02-CSS/3-imagens/background_curriculo.jpg);
-    background-size: 100%;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-
-
 }
 
 img{
-    width: 200px;
+    width: 10%;
 }
-#titulo{
+
+nav{
+    
+}
+
+h1{
     text-align: center;
     color: darkblue;
     text-transform: capitalize;
@@ -41,7 +40,7 @@ a:link{
     background-color: rgb(186, 224, 255);
 }
 a:visited{
-    color: red;
+    color: darkblue;
     background-color: black;
 }
 
