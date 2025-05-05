@@ -1,47 +1,117 @@
-body{
+:root {
+    --header-height: 28rem;
+}
+
+
+@font-face {
+    font-family: titles;
+    src: url('../02-CSS/DancingScript-VariableFont_wght.ttf');
+}
+
+html {
+    font-size: 62.5%;
+}
+
+p {
+    font-size: 1.6em;
+}
+
+body {
     background-color: rgb(224, 241, 255);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    text-align: justify;
 }
 
-img{
+
+header {
+    width: 100%;
+    height: var(--header-height);
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgb(180, 215, 245);}
+
+header img {
     width: 10%;
+    display: inline;
+    border: 1em groove gray;
+    margin-left: 15em;
 }
 
-nav{
-    
-}
-
-h1{
+h1 {
+    font-family: 'titles', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 2.4em;
+    display: inline;
     text-align: center;
     color: darkblue;
     text-transform: capitalize;
-    font-size: 40px;
-    border: 10px double black;
-    box-sizing: content-box;
+    border: 1em groove;
+    margin-left: 20em;
 }
 
-.titulo2{
-    text-indent: 80px;
+.titulo2 {
+    font-family: "titles", 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: blueviolet;
-    font-size: 30px;
+    font-size: 3em;
     text-transform: capitalize;
 }
 
-li{
-    text-transform: capitalize;    
-    list-style-type:lower-greek;
-    border: 5px outset black;
-    width:fit-content;
+li {
+    font-size: 1.6em;
+    text-transform: capitalize;
+    list-style-type: lower-greek;
+    width: fit-content;
 }
 
-a:link{
-    color:rgb(0, 0, 255);
+a:link {
+    color: rgb(0, 0, 255);
     background-color: rgb(186, 224, 255);
 }
-a:visited{
+
+a:visited {
     color: darkblue;
-    background-color: black;
+}
+
+main {
+    display: flex;
+    margin-top: var(--header-height);
 }
 
 
+
+
+.flexbox {
+    /*height: 30em; */
+    border: 0.5em solid black;
+    display: flex;
+}
+
+.flex-container2 {
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.left-container {
+    width: 30%;
+    min-height: 100vh;
+    display: flex;
+    border: 0.5em outset black;
+    overflow: auto;
+    flex-direction: column;
+}
+
+.right-container {
+    width: 70%;
+    min-height: 100vh;
+    display: flex;
+    border: 0.5em outset black;
+    overflow: auto;
+    flex-direction: column;
+
+}
+
+
+.item {
+    /*background-color: blanchedalmond; */
+    margin-bottom: 10px;
+    margin: 5px;
+}
