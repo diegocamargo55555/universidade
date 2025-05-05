@@ -4,7 +4,6 @@ import (
 	"bufio"
 	"bytes"
 	"fmt"
-	"io"
 	"log"
 	"os"
 	"strings"
@@ -26,28 +25,32 @@ func Show_txt() {
 	}
 }
 
-func Count_x(text io.Reader) int {
-	msg := "Lorem ipsum example of lorem ipsum."
-	fmt.Printf("contains %d occurences of ipsum \n", strings.Count(msg, "ipsum"))
+func Count_x() int {
+	text, _ := os.Open("texto.txt")
 
 	scanner := bufio.NewScanner(text)
-	i := 0
+	x_total := 0
+	temp := 0
 	// optionally, resize scanner's capacity for lines over 64K, see next example
 	for scanner.Scan() {
-		println("i:", i)
-		i++
+		temp = strings.Count(scanner.Text(), "x")
+		if temp > x_total && !strings.Contains(scanner.Text(), "max") {
+			x_total = temp
+		}
 	}
+	//strings.Contains("something", "some")
 
 	if err := scanner.Err(); err != nil {
 		log.Fatal(err)
 	}
-
-	x_total := strings.Count(msg, "x")
+	println("total x: ", x_total)
 	return x_total
 
 }
 
-func Contar_linhas(text io.Reader) int {
+func Contar_linhas() int {
+	text, _ := os.Open("texto.txt")
+
 	fileScanner := bufio.NewScanner(text)
 	lineCount := 0
 	for fileScanner.Scan() {
@@ -55,4 +58,24 @@ func Contar_linhas(text io.Reader) int {
 	}
 	fmt.Println("number of lines:", lineCount)
 	return lineCount
+}
+
+func Make_matriz() [][]string {
+	text, _ := os.Open("texto.txt")
+	var matrix [][]string
+
+	scanner := bufio.NewScanner(text)
+
+	for scanner.Scan() {
+		if !strings.Contains(scanner.Text(), "max") {
+			matrix = append(matrix, []string{scanner.Text()})
+
+		}
+
+	}
+	fmt.Println("test_matrix: ")
+
+	fmt.Println(matrix)
+	return matrix
+
 }
