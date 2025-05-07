@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"strconv"
 	"strings"
 )
 
@@ -43,7 +44,6 @@ func Count_x() int {
 	if err := scanner.Err(); err != nil {
 		log.Fatal(err)
 	}
-	println("total x: ", x_total)
 	return x_total
 
 }
@@ -63,35 +63,36 @@ func Contar_linhas() int {
 func Make_matriz() [][]string {
 	text, _ := os.Open("texto.txt")
 
-	linhas := "oi"
+	linhas := ""
 
 	var matrix [][]string
 	var B_matriz [][]string
-	//totalX := Count_x()
+	totalX := Count_x() + 1
 	scanner := bufio.NewScanner(text)
 	i := 0
 	for scanner.Scan() {
-
 		if !strings.Contains(scanner.Text(), "max") {
 			linhas = strings.Replace(scanner.Text(), "<", "", 1)
 
-			fmt.Println(string(linhas[1])) // ASCII only
+			//pega a matrix B
+			parts := strings.Split(linhas, "=")
+			B_matriz = append(B_matriz, []string{string(parts[1])})
 
-			igual := strings.Index(linhas, "=")
+			fmt.Println("tudo: ", linhas)
+			println("part1: ", parts[0], "+ x", totalX)
 
-			B_matriz[0][i] = string(linhas[igual])
+			parteA := ("part1: " + parts[0] + "+ x" + strconv.Itoa(totalX))
 
-			//xline := strings.Count(scanner.Text(), "x")
-
-			fmt.Println("teste 1: ", linhas)
-
-			matrix = append(matrix, []string{scanner.Text()})
+			matrix = append(matrix, []string{string(parteA)})
 			i++
+			totalX++
 
 		}
 	}
-	fmt.Println("test_matrix: ")
-	fmt.Println(linhas)
+
+	fmt.Println("matrizB:", B_matriz)
+	fmt.Println("matriX:", matrix)
+
 	return matrix
 
 }

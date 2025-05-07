@@ -6,10 +6,9 @@ import (
 
 func main() {
 
-	texto.Show_txt()
-	texto.Contar_linhas()
-
-	texto.Count_x()
+	//texto.Show_txt()
+	//texto.Contar_linhas()
+	//texto.Count_x()
 
 	var matrix [][]string
 
