@@ -17,6 +17,4 @@ export default class UserRepository extends Repository<User>{
         const user = this.findOne({where:{email}});
         return user;
     } 
-
-
 }
