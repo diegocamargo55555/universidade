@@ -62,20 +62,36 @@ func Contar_linhas() int {
 
 func Make_matriz() [][]string {
 	text, _ := os.Open("texto.txt")
+
+	linhas := "oi"
+
 	var matrix [][]string
-
+	var B_matriz [][]string
+	//totalX := Count_x()
 	scanner := bufio.NewScanner(text)
-
+	i := 0
 	for scanner.Scan() {
+
 		if !strings.Contains(scanner.Text(), "max") {
+			linhas = strings.Replace(scanner.Text(), "<", "", 1)
+
+			fmt.Println(string(linhas[1])) // ASCII only
+
+			igual := strings.Index(linhas, "=")
+
+			B_matriz[0][i] = string(linhas[igual])
+
+			//xline := strings.Count(scanner.Text(), "x")
+
+			fmt.Println("teste 1: ", linhas)
+
 			matrix = append(matrix, []string{scanner.Text()})
+			i++
 
 		}
-
 	}
 	fmt.Println("test_matrix: ")
-
-	fmt.Println(matrix)
+	fmt.Println(linhas)
 	return matrix
 
 }
