@@ -11,6 +11,7 @@ sessionRouter.post('/', celebrate({
         password: Joi.string().required()
     }
 }),
+
 async(req, res, next) =>{
     try{
         await sessionController.create(req, res, next)

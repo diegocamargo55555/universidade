@@ -14,6 +14,5 @@ export default class SessionsController{
             next(err)
         }
     }
-
 }
 
