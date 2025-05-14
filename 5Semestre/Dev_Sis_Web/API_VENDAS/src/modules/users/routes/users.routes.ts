@@ -2,8 +2,30 @@ import { Router } from "express";
 import UsersController from "../Controllers/UsersController"
 import { celebrate, Joi, Segments } from "celebrate";
 import isAuthenticated from "@shared/http/middlewares/isAuthenticated";
+import multer from "multer";
+import uploadConfig from "@config/upload";
+import UserAvatarController from "../Controllers/UserAvatarController";
+
+
 const usersRouter = Router()
 const usersController = new UsersController();
+
+const userAvatarController = new UserAvatarController
+const upload = multer(uploadConfig)
+
+usersRouter.patch(
+    "/avatar",
+    isAuthenticated,
+    upload.single("avatar"),
+    async(req, res, next) => {
+        try{
+            await userAvatarController.update(req, res, next)
+        }catch(err){
+            next(err)
+        }
+    }
+)
+
 
 usersRouter.get('/', isAuthenticated, async(req, res, next) =>{
     try{
