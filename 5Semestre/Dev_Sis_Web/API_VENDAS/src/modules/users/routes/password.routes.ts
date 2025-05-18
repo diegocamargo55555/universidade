@@ -1,0 +1,43 @@
+import { Router } from "express";
+import ForgotPasswordController from "../services/ForgotPasswordController";
+import { celebrate, Joi, Segments } from "celebrate";
+import ResetPasswordController from "../services/ResetPasswordController";
+
+
+
+const passwordRouter = Router()
+const forgotPasswordController = new ForgotPasswordController()
+const resetPasswordController = new ResetPasswordController()
+
+passwordRouter.post("/forgot", celebrate({
+    [Segments.BODY] : {
+        email: Joi.string().uuid().required()
+    }
+}),
+    async (req, res, next) => {
+        try{
+            await forgotPasswordController.create(req, res, next)
+        }catch(err){
+            next(err)
+        }
+    }
+)
+
+passwordRouter.post("/reset", celebrate({
+    [Segments.BODY] : {
+        token: Joi.string().uuid().required(),
+        password: Joi.string().required(),
+        password_confirmation: Joi.string().required().valid(Joi.ref("password"))
+    }
+}),
+    async (req, res, next) => {
+        try{
+            await resetPasswordController.create(req, res, next)
+        }catch(err){
+            next(err)
+        }
+    }
+)
+
+
+export default passwordRouter

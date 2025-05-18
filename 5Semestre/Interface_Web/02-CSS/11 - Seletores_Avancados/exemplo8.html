@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Seletores avançados</title>
+    <style>
+        input[type="text"]:read-only {
+            background-color: red;
+            border: none;
+            padding: .5em;
+        }
+
+        input[type="text"]:read-write {
+            background-color: turquoise;
+            border: none;
+            padding: .5em;
+        }
+
+        input[type="text"]::placeholder {
+            background-color: greenyellow;
+            border: none;
+            padding: .5em;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="#">
+        <input type="text" value="valor_inicial"> <br /><br />
+        <input type="text" value="valor_inicial" disabled> <br /><br />
+        <input type="text" value="valor_inicial" readonly> <br /><br />
+        <input type="text" placeholder="valor inicial"> <br /><br />
+        <input type="text" /> <br />
+    </form>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Seletores avançados</title>
+    <style>
+        p{
+            text-align: center;
+        }
+
+        p::before{
+            content: "<<<<";
+        }
+
+        p::after{
+            content: ">>>>";
+        }
+
+        div::before{
+            content: "";
+            width: 1em;
+            height: 1em;
+            background-color: red;
+            display: block;
+        }
+
+        div::after{
+            content: url(https://i.redd.it/ihwas-outfits-v0-cwg5l6poinzc1.jpg?width=720&format=pjpg&auto=webp&s=486889eb0e246cf4266768bddd795428c0dd7681)
+        }
+
+    </style>
+</head>
+
+<body>
+    <div>
+    <p>Paragrafocom texto simples.</p>
+    </div>
+</body>
+
+</html>

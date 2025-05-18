@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Seletores avançados</title>
+    <style>
+        a[href="#"] {
+            color: red;
+        }
+
+        a[href="#"]:not(.link-on) {
+            opacity: .2;
+        }
+
+        a[href^="http"] {
+            color: green;
+        }
+
+        a[href$=".pdf"] {
+            color: orange;
+        }
+
+        a[target="_blank"]{
+            /*color: violet; sobre escreve o verde*/
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li><a href="#">link falso</a></li>
+        <li><a href="#" class="link-on">link falso</a></li>
+        <li><a href="https://www.unicentro.com.br" target="_blank">link externo</a></li>
+        <li><a href="pasta/arquivo.pdf">link para arquivo pdf</a></li>
+        <li> <a href="exemplo2.html">link interno</a></li>
+
+    </ul>
+
+</body>
+
+</html>
