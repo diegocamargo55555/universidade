@@ -1,7 +1,7 @@
 import { Router } from "express";
-import ForgotPasswordController from "../services/ForgotPasswordController";
+import ForgotPasswordController from "../Controllers/ForgotPasswordController";
 import { celebrate, Joi, Segments } from "celebrate";
-import ResetPasswordController from "../services/ResetPasswordController";
+import ResetPasswordController from "../Controllers/ResetPasswordController";
 
 
 

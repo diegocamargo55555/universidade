@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import ResetPasswordService from "./ResetPasswordService";
+import ResetPasswordService from "../services/ResetPasswordService";
 
 
 export default class ResetPasswordController{
