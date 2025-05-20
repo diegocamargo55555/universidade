@@ -1,0 +1,65 @@
+:root{
+    --primary-color: #e10f0f
+}
+
+
+body {
+    font-family: sans-serif;
+    background-image:linear-gradient(blue, var(--primary-color)), url(imagens/tile.png); /*faz com que comece com a cor azul e transicione para o vermelho*/
+    /* tire essa parte para ter um exemplo melhor
+        background-image:linear-gradient(transparent 50%, red), url(imagens/tile.png); faz com que comece com a cor azul e transicione para o vermelho
+
+        para fazer que seja na horizontal
+    background-image:linear-gradient(to left, transparent 50%, red), url(imagens/tile.png); /*faz com que comece com a cor azul e transicione para o vermelho
+
+    */
+    background-blend-mode: color; /*Cria um degrade fraco e transparecente para não cobrir completamente a imagem*/
+    background-attachment: fixed;
+}
+
+.cores{
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    border: 8px dashed color-mix(in srgb, var(--primary-color), transparent); /*mistura as cores vermelho e azul e coloca na borda*/
+}
+.cores:nth-of-type(1){ /*para ficar apenas no primeiro elemento*/
+    background-color: color-mix(in srgb, var(--primary-color), transparent);
+}
+
+.cores:nth-of-type(2){ /*para ficar apenas no segundo elemento*/
+    background-color: white;
+    background-clip: padding-box;
+}
+
+.cores:nth-of-type(3){ /*cor base do terceiro elemento*/
+    background-color: hsl(50deg, 100%, 80%); /*HSL trabalha com um range grande de cores e luminosidade*/
+}
+
+.cores:nth-of-type(3):hover{ /*mudança de cor do terceiro elemento*/
+    background-color: hsl(50deg, 100%, 40%);
+    box-shadow: 10px 10px 6px -3px hsl(50deg, 100%, 30%);
+}
+
+
+
+.cores p {
+    margin: 0;
+}
+
+
+/* essa parte do contador serve apenas para se localizar nas divs*/
+section {
+    counter-reset: contador; /*Cria o contador*/
+}
+
+.cores {
+    counter-increment: contador; /* contador++*/
+}
+
+.cores::before {
+    content: "[" counter(contador)"]"; /*mostra o contador*   "[contador]"   */
+    display: inline-block;
+    margin: 10px;
+    font-weight: bold;
+}

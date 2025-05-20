@@ -1,0 +1,89 @@
+*{ /*Zerar completamente o CSS do arquivo*/
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family: sans-serif;
+    display: flex;
+    gap: 2em;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: rgb(188, 197, 197);
+}
+
+img{
+    max-width: 100%;
+    display: block;
+}
+.gallery{
+    width: 60rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: .5;
+    background-color: #fff;
+    padding: .5em;
+    box-shadow: 0 0 14px 2px rgba(0, 0, 0, .3);
+}
+
+.gallery .image{
+    flex-basis: calc(25% - .5em); /*para que fique 4 elementos por tela*/
+    position: relative;
+    overflow: hidden;
+    flex-grow: 1; /*se não tiver as 4 imagens para usar, preenche a tela com as imagens que tem*/
+}
+
+.image a{
+    text-decoration: none;
+}
+
+.gallery p{
+    background-color: rgba(0, 0, 0, .8);
+    color: #fff;
+    text-transform: uppercase;
+    padding: 1em;
+    letter-spacing: 2px;
+    font-size: .75em;
+    position: absolute;
+    bottom: 0;
+    opacity: .2;
+    width: 100%;
+    transform: translateY(100);/*utilizado para fazer aparecer a descrição da imagem junto com o .image:hover p*/
+    transition: all .3s ease-in-out;/*utilizado para fazer aparecer a descrição da imagem junto com o .image:hover p*/
+
+}
+
+.image:hover p{ /*faz aparecer a descrição da imagem*/
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.image img{ /* serve para voltar do zoom na imagem*/
+    transform: scale(1);
+    transition: transform .5s ease-in-out; 
+}
+
+.image:hover img{ /* serve para dar zoom na imagem*/
+    transform: scale(1.2);
+} 
+
+.image::after{ /*cria uma camada transparente de branco sobre a imagem*/
+    content: "";
+    position: absolute;
+    background-color: #fff;
+    inset: 0;
+    opacity: .5;
+    pointer-events: none;
+    transform: scale(1);
+    transition: all .2s ease-in-out;
+}
+
+.image:hover::after{ /*Tira a camada transparente de branco da imagem*/
+    opacity: 0;
+    transform: scale(.2);
+}
+

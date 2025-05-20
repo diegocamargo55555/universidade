@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ttransformação 2D</title>
+    <style>
+        div {
+            outline: 1px solid black;
+            width: 200px;
+            margin: .5em auto;
+        }
+
+        p {
+            width: 50%;
+        }
+
+        .destaque {
+            background-color: yellow;
+        }
+
+        .div1 .destaque {
+            transform: translate(50px);
+            /*joga 50 px para a direita util para efeitos de quando passa o mouse em cima*/
+        }
+
+        .div2 .destaque {
+            transform: rotate(90deg);
+            /*rotaciona o elemento*/
+        }
+
+        .div3 .destaque {
+            transform: scale(1.5);
+            /*aumenta em 50%   (multiplica o tamanho por 1.5)*/
+        }
+
+        .div4 .destaque {
+            transform: skewX(50deg);
+            /*distorce o elemento*/
+        }
+
+        .div5 .destaque {
+            transform: translate(50px, -50px);
+            transform: rotate(90deg);
+            /*somente a segunda será pega*/
+        }
+
+        .div6 .destaque {
+            transform: translate(50px, -50px) rotate(90deg);
+            /*ambas serão pegas*/
+        }
+    </style>
+</head>
+
+<body>
+    <div class="div1">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, ad.</p>
+        <p class="destaque">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, cupiditate?</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero, ut.</p>
+    </div>
+
+    <div class="div2">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, ad.</p>
+        <p class="destaque">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, cupiditate?</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero, ut.</p>
+    </div>
+
+    <div class="div3">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, ad.</p>
+        <p class="destaque">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, cupiditate?</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero, ut.</p>
+    </div>
+
+    <div class="div4">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, ad.</p>
+        <p class="destaque">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, cupiditate?</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero, ut.</p>
+    </div>
+
+    <div class="div5">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, ad.</p>
+        <p class="destaque">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, cupiditate?</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero, ut.</p>
+    </div>
+
+    <div class="div6">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, ad.</p>
+        <p class="destaque">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, cupiditate?</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero, ut.</p>
+    </div>
+
+</body>
+
+</html>
