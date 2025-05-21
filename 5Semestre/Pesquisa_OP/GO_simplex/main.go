@@ -10,11 +10,8 @@ func main() {
 	//texto.Contar_linhas()
 	//texto.Count_x()
 
-	var matrix [][]string
+	//var matrix [][]string
 
-	matrix = texto.Make_matriz()
-	if 1 == 2 {
-		println(matrix)
-	}
+	texto.Make_matriz()
 
 }
