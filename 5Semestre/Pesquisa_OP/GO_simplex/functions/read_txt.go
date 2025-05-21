@@ -98,6 +98,7 @@ func Make_matriz() {
 
 		matrix[i] = strings.ReplaceAll(matrix[i], "-", "+-")
 		partes := strings.Split(matrix[0], "+")
+		fmt.Println("partes:", partes)
 
 		for j := 0; j < strings.Count(matrix[i], "+"); j++ {
 			println("*", j)
