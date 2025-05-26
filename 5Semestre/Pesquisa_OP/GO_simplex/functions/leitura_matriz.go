@@ -1,8 +1,7 @@
-package texto
+package matriz
 
 import (
 	"bufio"
-	"bytes"
 	"fmt"
 	"log"
 	"os"
@@ -10,28 +9,12 @@ import (
 	"strings"
 )
 
-func Show_txt() {
-	fileData, _ := os.ReadFile("texto.txt")
-
-	word := []byte{}
-	breakLine := "\n"
-
-	for _, data := range fileData {
-		if !bytes.Equal([]byte{data}, []byte(breakLine)) {
-			word = append(word, data)
-		} else {
-			fmt.Printf("ReadLine: %q\n", word)
-			word = word[:0]
-		}
-	}
-}
-
 func Total_de_x() int {
 	text, _ := os.Open("texto.txt")
-
 	scanner := bufio.NewScanner(text)
 	x_total := 0
 	temp := 0
+
 	for scanner.Scan() {
 		temp = strings.Count(scanner.Text(), "x")
 		if temp > x_total && !strings.Contains(scanner.Text(), "max") {
@@ -47,23 +30,25 @@ func Total_de_x() int {
 
 func Contar_linhas() int {
 	text, _ := os.Open("texto.txt")
-
 	fileScanner := bufio.NewScanner(text)
 	lineCount := 0
 	for fileScanner.Scan() {
 		lineCount++
 	}
-	fmt.Println("number of lines:", lineCount)
 	return lineCount
 }
 
-func Make_matriz() {
+func Make_matriz() ([][]float64, []float64) {
 	text, _ := os.Open("texto.txt")
 
 	var matrix []string
-	var B_matriz []string
+	var B_matriz []float64
+	var numero float64
+	var err error
+
 	totalX := Total_de_x() + 1
 	scanner := bufio.NewScanner(text)
+
 	for scanner.Scan() {
 		if !strings.Contains(scanner.Text(), "max") {
 			parts := strings.Split(scanner.Text(), "=")
@@ -80,56 +65,46 @@ func Make_matriz() {
 				parts[0] = strings.Replace(parts[0], ">", "", 1)
 			}
 
-			B_matriz = append(B_matriz, string(parts[1]))
+			numero, _ = strconv.ParseFloat(parts[1], 64)
+			B_matriz = append(B_matriz, numero)
 			matrix = append(matrix, string(parts[0]))
-
 			totalX++
 		}
 	}
 
-	fmt.Println("matrizB:", B_matriz)
-	fmt.Println("matriX:", matrix)
+	linhas := Contar_linhas() - 1
+	colunas := linhas + Total_de_x()
 
-	var matrix_final [3][3]float64
+	matrix_final := make([][]float64, linhas)
+	for i := 0; i < linhas; i++ {
+		matrix_final[i] = make([]float64, colunas)
+	}
 
 	for i := 0; i < len(matrix); i++ {
-		println("\n", i, "----\n")
-		fmt.Println("matriX:", matrix)
-
 		matrix[i] = strings.ReplaceAll(matrix[i], "-", "+-")
-		partes := strings.Split(matrix[0], "+")
-		fmt.Println("partes:", partes)
+		partes := strings.Split(matrix[i], "+")
 
-		for j := 0; j < strings.Count(matrix[i], "+"); j++ {
-			println("*", j)
+		for j := 0; j < len(partes); j++ {
+			for k := 1; k <= colunas; k++ {
 
-			println("partesJ:", partes[j])
-			println("strconv.Itoa(i): x" + strconv.Itoa(i))
+				if strings.Contains(partes[j], "x"+strconv.Itoa(k)) {
+					partes[j] = strings.ReplaceAll(partes[j], "x"+strconv.Itoa(k), "")
 
-			if strings.Contains(partes[j], "x"+strconv.Itoa(i)) {
-				println("--match--")
-
-				partes[j] = strings.ReplaceAll(partes[j], "x"+strconv.Itoa(i), "")
-				println("parts(valor a ser add):", partes[j])
-
-				numero, err := strconv.ParseFloat(partes[j], 64)
-				if err != nil {
-					panic(err)
+					if partes[j] == "" {
+						numero = 1
+					} else {
+						numero, err = strconv.ParseFloat(partes[j], 64)
+						if err != nil {
+							panic(err)
+						}
+					}
+					matrix_final[i][k-1] = numero
 				}
-
-				matrix_final[0][i-1] = numero
-			} else {
-				println("--not match--")
 			}
-
 		}
-		fmt.Println("matrix_final:", matrix_final)
-
 	}
-
 	for i := 0; i < len(matrix); i++ {
-		fmt.Println("matriX:", matrix[i]+" = "+B_matriz[i])
+		fmt.Println("matrix A = B:", matrix_final[i], " = ", B_matriz[i])
 	}
-	fmt.Println("matrix_final:", matrix_final)
-
+	return matrix_final, B_matriz
 }
