@@ -15,7 +15,6 @@ export default class CreateCustomerService {
         if (emailsExists) {
             throw new AppError('Email adress already used');
         }
-        //const hashedpassPassword = await hash(password, 8)
         const customer = customerRepository.create({ name, email });
         await customerRepository.save(customer);
         return customer;
