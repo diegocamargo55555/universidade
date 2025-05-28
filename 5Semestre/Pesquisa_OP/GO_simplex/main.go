@@ -6,6 +6,11 @@ import (
 
 func main() {
 
-	matriz.Make_matriz()
+	var B_matriz []float64
+	var A_matriz [][]float64
+
+	A_matriz, B_matriz = matriz.Make_matriz()
+
+	println("a:", A_matriz, "\nb:", B_matriz)
 
 }
