@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	matriz "main/functions"
 )
 
@@ -11,6 +12,6 @@ func main() {
 
 	A_matriz, B_matriz = matriz.Make_matriz()
 
-	println("a:", A_matriz, "\nb:", B_matriz)
+	fmt.Println("a:", A_matriz, "\nb:", B_matriz)
 
 }
