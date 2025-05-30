@@ -1,10 +1,15 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import OrdersProducts from "@modules/orders/typeorm/entities/OrdersProducts";
+import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
 @Entity('products')
-export default class Product{
+export default class Product {
     @PrimaryGeneratedColumn('uuid')
     id: string;
-    
+
+    @OneToMany(() => OrdersProducts, orders_Products => orders_Products.product)
+    order_products: OrdersProducts[]
+
+
     @Column()
     name: string;
 
@@ -19,4 +24,5 @@ export default class Product{
 
     @UpdateDateColumn()
     updated_at: Date;
+    orders_products: any;
 }
