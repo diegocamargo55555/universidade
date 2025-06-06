@@ -6,7 +6,7 @@ export default class Product {
     @PrimaryGeneratedColumn('uuid')
     id: string;
 
-    @OneToMany(() => OrdersProducts, orders_Products => orders_Products.product)
+    @OneToMany(() => OrdersProducts, orders_products => orders_products.product)
     order_products: OrdersProducts[]
 
 

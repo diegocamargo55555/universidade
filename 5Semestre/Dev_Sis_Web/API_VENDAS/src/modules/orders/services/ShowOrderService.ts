@@ -10,7 +10,7 @@ interface Irequest {
 export default class ShowOrdertService {
     public async execute({ id }: Irequest): Promise<Order> {
         const ordersRepository = getCustomRepository(OrdersRepository);
-        const order = await ordersRepository.findOne({ id });
+        const order = await ordersRepository.findById(id);
         if (!order) {
             throw new AppError('order not found')
         }

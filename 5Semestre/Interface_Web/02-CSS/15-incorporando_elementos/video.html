@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>video</title>
+
+    <style>
+        ::cue{ /*legenda em ingles*/
+            color: red;
+        }
+
+    </style>
+</head>
+
+<body>
+    <video src="media/mozart_trompa.mp3" controls></video><br>
+
+    <video controls autoplay loop muted>
+        <source src="media/video.mp4" type="video/mp3">
+        <source src="media/video.ogv" type="video/ogg">
+        <source src="media/video.webm" type="video/webm">
+
+        <track src="media/track.pt.vtt" kind="captions" srclang="pt" label="Portugues">
+        </track>
+        <track src="media/track.en.vtt" kind="captions" srclang="pt" label="english">
+        </track>
+
+    </video>
+
+
+</body>
+
+</html>

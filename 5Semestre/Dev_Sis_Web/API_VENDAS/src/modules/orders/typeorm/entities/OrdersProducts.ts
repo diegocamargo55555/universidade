@@ -7,7 +7,7 @@ export default class OrdersProducts {
     id: string
 
     @ManyToOne(() => Order, order => order.orders_products)
-    @JoinColumn({ name: "customer_id" })
+    @JoinColumn({ name: "order_id" })
     order: Order
 
     @ManyToOne(() => Product, product => product.orders_products)
