@@ -25,6 +25,4 @@ export default class OrdersRepository extends Repository<Order> {
         await this.save(order)
         return order;
     }
-
-
 }

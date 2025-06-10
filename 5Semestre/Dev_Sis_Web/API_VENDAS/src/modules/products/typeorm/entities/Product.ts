@@ -7,8 +7,7 @@ export default class Product {
     id: string;
 
     @OneToMany(() => OrdersProducts, orders_products => orders_products.product)
-    order_products: OrdersProducts[]
-
+    order_products: OrdersProducts[];
 
     @Column()
     name: string;
