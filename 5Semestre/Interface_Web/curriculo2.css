@@ -1,14 +1,11 @@
 :root {
-    --header-height: 28rem;
+    --header-height: 24rem;
 }
-
 
 @font-face {
     font-family: titles;
     src: url('../02-CSS/DancingScript-VariableFont_wght.ttf');
 }
-
-
 
 html {
     font-size: 62.5%;
@@ -19,23 +16,36 @@ p {
 }
 
 body {
-    background-color: rgb(224, 241, 255);
+    margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
 }
 
+.gridContainer {
+    width: 100vw;
+    height: 150vh;
+    background-color: rgb(224, 241, 255);
+    display: grid;
+    grid-template:
+        "header header header header" var(--header-height) "aside main main main" 1fr;
+}
 
-header {
+.gridItem {
+    padding: 10px;
+    font-family: sans-serif;
+}
+
+.header {
+    /*grid-column: 1 /-1;*/
     grid-area: header;
-    border: 0.5em solid black;
-    height: var(--header-height);
-    top: 0;
-    left: 0;
     background-color: rgb(180, 215, 245);
+    border: 0.5em solid black;
+    position: fixed;
+    height: var(--header-height);
 }
 
-header img {
+.header img {
     width: 10%;
-    display: inline;
     border: 1em groove gray;
     margin-left: 15em;
 }
@@ -44,11 +54,19 @@ h1 {
     font-family: 'titles', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 2.4em;
     display: inline;
-    text-align: center;
     color: darkblue;
-    text-transform: capitalize;
-    border: 1em groove;
     margin-left: 20em;
+    margin-bottom: 5em;
+}
+
+.aside {
+    grid-area: aside;
+    border: 0.5em outset black;
+}
+
+.main {
+    grid-area: main;
+    border: 0.5em outset black;
 }
 
 .titulo2 {
@@ -57,6 +75,7 @@ h1 {
     font-size: 3em;
     text-transform: capitalize;
 }
+
 
 li {
     font-size: 1.6em;
@@ -73,33 +92,12 @@ a:link {
 a:visited {
     color: darkblue;
 }
-.gridContainer {
-    grid-template: "header header header" 75px
-    "aside main main " 1fr;
-    gap: 1em;
-}
 
-
-.left-container {
-    border: 0.5em outset black;
-    overflow: auto;
-    grid-area: aside;
-}
-
-.right-container {
-
-    border: 0.5em outset black;
-    overflow: auto;
-    grid-area: main;
-
-
-}
 .item {
     /*background-color: blanchedalmond; */
     margin-bottom: 10px;
     margin: 5px;
 }
-
 
 
 @media screen and (max-width: 70em) {
@@ -120,5 +118,4 @@ main {
 }
 
 }
-
 

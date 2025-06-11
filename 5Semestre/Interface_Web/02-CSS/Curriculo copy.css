@@ -1,5 +1,6 @@
 :root {
     --header-height: 28rem;
+    --azul-escuro: #
 }
 
 
@@ -7,8 +8,6 @@
     font-family: titles;
     src: url('../02-CSS/DancingScript-VariableFont_wght.ttf');
 }
-
-
 
 html {
     font-size: 62.5%;
@@ -25,12 +24,15 @@ body {
 
 
 header {
-    grid-area: header;
     border: 0.5em solid black;
+    display: flex;
+    width: 100%;
     height: var(--header-height);
+    position: fixed;
     top: 0;
     left: 0;
     background-color: rgb(180, 215, 245);
+
 }
 
 header img {
@@ -73,27 +75,31 @@ a:link {
 a:visited {
     color: darkblue;
 }
-.gridContainer {
-    grid-template: "header header header" 75px
-    "aside main main " 1fr;
-    gap: 1em;
+
+main {
+    display: flex;
+    margin-top: var(--header-height);
 }
 
-
 .left-container {
+    width: 30%;
+    min-height: 100vh;
+    display: flex;
     border: 0.5em outset black;
     overflow: auto;
-    grid-area: aside;
+    flex-direction: column;
 }
 
 .right-container {
-
+    width: 70%;
+    min-height: 100vh;
+    display: flex;
     border: 0.5em outset black;
     overflow: auto;
-    grid-area: main;
-
-
+    flex-direction: column;
 }
+
+
 .item {
     /*background-color: blanchedalmond; */
     margin-bottom: 10px;

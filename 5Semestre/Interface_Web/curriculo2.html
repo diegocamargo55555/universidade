@@ -1,20 +1,20 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../02-CSS/Curriculo copy.css">
-    <title>CURRICULO</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curriculo GRID</title>
+    <link rel="stylesheet" href="curriculo2.css">
 </head>
 
 <body>
-    <header class="flexbox">
-        <img src="../02-CSS/3-imagens/EU.jpeg" alt="">
-        <h1>Diego Camargo Cassita da Silva</h1>
-    </header>
-
-    <main>
-        <div class="left-container">
+    <div class="gridContainer">
+        <div class="header gridItem">
+            <img src="../02-CSS/3-imagens/EU.jpeg" alt="">
+            <h1>Diego Camargo Cassita da Silva</h1>
+        </div>
+        <div class="aside gridItem">
             <div class="item">
                 <h2 class="titulo2">Dados pessoais</h2>
                 <ul>
@@ -35,7 +35,8 @@
             </div>
         </div>
 
-        <div class="right-container">
+
+        <div class="main gridItem">
             <div class="item">
                 <h2 class="titulo2">Escolariedade</h2>
                 <ul>
@@ -75,8 +76,10 @@
                     <li><a href="primeiras_tags.html">resumo da primeira aula</a> </li>
                 </ul>
             </div>
-    </main>
 
+        </div>
+
+    </div>
 </body>
 
 </html>
