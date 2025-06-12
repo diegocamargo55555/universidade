@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>estruturas de repeticao</title>
+</head>
+
+<body>
+    <script>
+
+        let cont = 0
+        let dado1
+        let dado2
+        do {
+
+            cont++
+            dado1 = parseInt(Math.random() * 6 + 1)
+            dado2 = parseInt(Math.random() * 6 + 1)
+            console.log(dado1, dado2)
+
+
+        } while (dado1 != dado2);
+
+        console.log(" os dados foram jogados " + cont + "vezes")
+        console.log("O numero repetido foi " + dado1)
+
+
+
+
+    </script>
+
+    <h1>estruturas de repeticao</h1>
+
+</body>
+
+</html>

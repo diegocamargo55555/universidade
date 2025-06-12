@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrays E Objetos</title>
+    <script>
+        let n1 = "Joao"
+        let n2 = "Pedaro"
+        let n3 = "Maria"
+        document.write(n1 + "<br/>")
+        document.write(n2 + "<br/>")
+        document.write(n3 + "<br/>")
+
+        let nomesliteral = ["Joao", "Pedro", "Maria"]
+        let nomesConstrutor = new Array("Joao", "pedro", "Maria")
+
+        console.log(nomesliteral)
+        console.log(nomesConstrutor)
+
+        nomesliteral.push("Marcos")
+        nomesConstrutor.push("Marcos")
+        console.log(nomesliteral)
+        console.log(nomesConstrutor)
+
+        nomesliteral.pop()
+        nomesConstrutor.pop()
+        console.log(nomesliteral)
+        console.log(nomesConstrutor)
+
+        for (let i = 0; i < nomesliteral.length; i++) {
+            document.write("nome: " + nomesliteral[i] + "<br />")            
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Objetos</h1>
+</body>
+
+</html>

@@ -135,7 +135,3 @@ func Make_matriz() ([][]float64, []float64, []float64) {
 
 	return matrix_final, B_matriz, matrizCT
 }
-
-func Mount_tabela(matrizA [][]float64, matrizB []float64, matrizM []float64) {
-
-}

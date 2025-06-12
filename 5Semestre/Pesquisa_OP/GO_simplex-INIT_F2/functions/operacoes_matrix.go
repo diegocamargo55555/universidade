@@ -2,19 +2,19 @@ package matriz
 
 import "math"
 
-func InverterMatriz(matriz [][]int) [][]int {
+func InverterMatriz(matriz [][]float64) [][]float64 {
 	linhas := len(matriz)
 	if linhas == 0 {
-		return [][]int{}
+		return [][]float64{}
 	}
 	colunas := len(matriz[0])
 	if colunas == 0 {
-		return [][]int{}
+		return [][]float64{}
 	}
 
-	matrizInvertida := make([][]int, colunas)
+	matrizInvertida := make([][]float64, colunas)
 	for i := range matrizInvertida {
-		matrizInvertida[i] = make([]int, linhas)
+		matrizInvertida[i] = make([]float64, linhas)
 	}
 
 	for i := 0; i < linhas; i++ {

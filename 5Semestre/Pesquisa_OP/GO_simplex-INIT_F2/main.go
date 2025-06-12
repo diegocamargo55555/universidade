@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	matriz "main/functions"
+	"main/functions/phaseII"
 )
 
 func main() {
@@ -11,5 +12,5 @@ func main() {
 
 	fmt.Println("a:", A_matriz, "\nb:", B_matriz, "\nmax/min: ", MZ_matriz)
 
-	matriz.Mount_tabela(A_matriz, B_matriz, MZ_matriz)
+	phaseII.Mount_tabela(A_matriz, B_matriz, MZ_matriz)
 }
