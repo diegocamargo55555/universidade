@@ -57,15 +57,36 @@ func Mount_tabela(matrizA [][]float64, matrizB []float64, matrizM []float64) {
 
 }
 
-func passo1(basica [][]float64, matrizB []float64) {
+func passo1(basica [][]float64, matrizB [][]float64, coeficientesB []float64) [][]float64 {
 	basica = matriz.InverterMatriz(basica)
-	//basica * matriz
+	var fx float64
+	//Avaliação da função objetivo:
+	for i := 0; i < len(coeficientesB); i++ {
+		fx += coeficientesB[i] * matrizB[i][0]
+	}
+	println(fx)
+	return matriz.Multiplicacao(basica, matrizB) // Resolva o sistema BxB = b ou xB = B −1 b e obtenha x̂B
 }
 
-func passo2(basica [][]float64, coeficientes []float64) {
+func passo2(basica [][]float64, coeficientesN []float64, coeficientesB []float64, Nbasica [][]float64)  {
 	basica = matriz.InverterMatriz(basica)
+	cb := matriz.Multiplicacao(basica, coeficientesB)
 	//basica * coeficientes
 
 	//custos relativos 2.2
+	//ĉ1 = c1 − λT * a1             = coe - matriz.Multiplicacao(CB, basica) * Nbasica
+	var cresult []float64
+	for _, coe := range coeficientesN {
+		cresult = append(cresult, (coe - matriz.Multiplicacao()[][]))
+	}
+}
 
+func passo4(basica [][]float64, Nbasica [][]float64)  {
+	//   y = B a2   ===       
+
+	y := matriz.InverterMatriz(basica) * Nbasica
+}
+
+func passo5()  {
+	
 }

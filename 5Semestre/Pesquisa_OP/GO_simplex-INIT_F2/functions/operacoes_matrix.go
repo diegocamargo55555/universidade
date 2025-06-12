@@ -1,6 +1,8 @@
 package matriz
 
-import "math"
+import (
+	"math"
+)
 
 func InverterMatriz(matriz [][]float64) [][]float64 {
 	linhas := len(matriz)
@@ -58,4 +60,29 @@ func Determinante(matriz [][]float64) float64 {
 		det += math.Pow(-1, float64(j)) * termo
 	}
 	return det
+}
+
+func Multiplicacao(a [][]float64, b [][]float64) [][]float64 {
+	if len(a[0]) != len(b) {
+		panic("número de colunas da primeira matriz deve ser igual ao número de linhas da segunda")
+	}
+
+	linhaA := len(a)
+	colunaA := len(a[0])
+	colunaB := len(b[0])
+
+	result := make([][]float64, linhaA)
+	for i := range result {
+		result[i] = make([]float64, colunaB)
+	}
+
+	for i := 0; i < linhaA; i++ {
+		for j := 0; j < colunaB; j++ {
+			for k := 0; k < colunaA; k++ {
+				result[i][j] += a[i][k] * b[k][j]
+			}
+		}
+	}
+
+	return result
 }
