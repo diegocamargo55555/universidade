@@ -63,13 +63,13 @@ func Determinante(matriz [][]float64) float64 {
 }
 
 func Multiplicacao(a [][]float64, b [][]float64) [][]float64 {
-	if len(a[0]) != len(b) {
-		panic("número de colunas da primeira matriz deve ser igual ao número de linhas da segunda")
-	}
-
 	linhaA := len(a)
 	colunaA := len(a[0])
 	colunaB := len(b[0])
+
+	if colunaA != len(b) {
+		panic("número de colunas da primeira matriz deve ser igual ao número de linhas da segunda")
+	}
 
 	result := make([][]float64, linhaA)
 	for i := range result {

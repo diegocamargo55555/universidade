@@ -98,12 +98,11 @@ func Make_matriz() ([][]float64, []float64, []float64) {
 			}
 		}
 	}
-	fmt.Println("\nBasica: ", matrizCT)
 	// get_number_linha
 
-	matrix_final := make([][]float64, linhas)
+	matrix_A := make([][]float64, linhas)
 	for i := 0; i < linhas; i++ {
-		matrix_final[i] = make([]float64, colunas)
+		matrix_A[i] = make([]float64, colunas)
 	}
 
 	for i := 0; i < len(matrix); i++ {
@@ -111,6 +110,7 @@ func Make_matriz() ([][]float64, []float64, []float64) {
 		partes := strings.Split(matrix[i], "+")
 
 		for j := 0; j < len(partes); j++ {
+
 			for k := 1; k <= colunas; k++ {
 
 				if strings.Contains(partes[j], "x"+strconv.Itoa(k)) {
@@ -118,20 +118,26 @@ func Make_matriz() ([][]float64, []float64, []float64) {
 
 					if partes[j] == "" {
 						numero = 1
+					} else if partes[j] == "-" {
+						numero = -1
+
 					} else {
 						numero, err = strconv.ParseFloat(partes[j], 64)
 						if err != nil {
 							panic(err)
 						}
 					}
-					matrix_final[i][k-1] = numero
+
+					matrix_A[i][k-1] = numero
+
 				}
 			}
 		}
 	}
+
 	for i := 0; i < len(matrix); i++ {
-		fmt.Println("matrix A = B:", matrix_final[i], " = ", B_matriz[i])
+		fmt.Println("matrix A = B:", matrix_A[i], " = ", B_matriz[i])
 	}
 
-	return matrix_final, B_matriz, matrizCT
+	return matrix_A, B_matriz, matrizCT
 }

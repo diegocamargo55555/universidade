@@ -46,7 +46,6 @@ func Mount_tabela(matrizA [][]float64, matrizB []float64, matrizM []float64) {
 	for i := 1; i <= len(matrizM); i++ {
 		coeficientes[i-1] = matrizM[len(matrizM)-i]
 	}
-
 	for i := 0; i < len(nao_basicasBN); i++ {
 		fmt.Println("nao_basicasBN:", nao_basicasBN[i])
 	}
@@ -55,38 +54,51 @@ func Mount_tabela(matrizA [][]float64, matrizB []float64, matrizM []float64) {
 	}
 	fmt.Println("coeficientes:", coeficientes)
 
+	p1 := passo1(basicasBN, nao_basicasBN, coeficientes)
+	fmt.Println("p1: ", p1)
+
+	//p2 := passo2(basicasBN)
+	//println("p1: ", p1)
+
 }
 
 func passo1(basica [][]float64, matrizB [][]float64, coeficientesB []float64) [][]float64 {
 	basica = matriz.InverterMatriz(basica)
+	fmt.Println("coeficientesB", coeficientesB)
+	fmt.Println("matrizB", matrizB)
+
 	var fx float64
 	//Avaliação da função objetivo:
-	for i := 0; i < len(coeficientesB); i++ {
+	for i := 0; i < len(matrizB); i++ {
+		fmt.Println("CBi * XBi =", coeficientesB[i], "*", matrizB[i][0])
 		fx += coeficientesB[i] * matrizB[i][0]
 	}
-	println(fx)
+	fmt.Println("fx:", fx)
 	return matriz.Multiplicacao(basica, matrizB) // Resolva o sistema BxB = b ou xB = B −1 b e obtenha x̂B
 }
 
-func passo2(basica [][]float64, coeficientesN []float64, coeficientesB []float64, Nbasica [][]float64)  {
+func passo2(basica [][]float64, coeficientesN [][]float64, coeficientesB [][]float64, Nbasica [][]float64) {
 	basica = matriz.InverterMatriz(basica)
-	cb := matriz.Multiplicacao(basica, coeficientesB)
-	//basica * coeficientes
 
 	//custos relativos 2.2
-	//ĉ1 = c1 − λT * a1             = coe - matriz.Multiplicacao(CB, basica) * Nbasica
+	//ĉ1 = c1 − λT * a1             = coe - matriz.Multiplicacao(basica, CB) * Nbasica
+	CBB := matriz.Multiplicacao(coeficientesB, basica)
 	var cresult []float64
-	for _, coe := range coeficientesN {
-		cresult = append(cresult, (coe - matriz.Multiplicacao()[][]))
+	for i := 0; i < len(coeficientesN); i++ {
+		cresult = append(cresult, (coeficientesN[0][i] - CBB[0][0]))
 	}
 }
 
-func passo4(basica [][]float64, Nbasica [][]float64)  {
-	//   y = B a2   ===       
+func passo4(basica [][]float64, Nbasica [][]float64) [][]float64 {
+	//   y = B a2   ===
+	basica = matriz.InverterMatriz(basica)
 
-	y := matriz.InverterMatriz(basica) * Nbasica
+	//y := basica * Nbasica
+	y := matriz.Multiplicacao(basica, Nbasica)
+	return y
+
 }
 
-func passo5()  {
-	
+func passo5() {
+
 }
