@@ -122,8 +122,6 @@ func Make_matriz() ([][]float64, [][]float64, [][]float64, [][]float64) {
 	//fmt.Println("CoeBasicos", CoeBasicos)
 	//fmt.Println("CoeNaoBasicos", CoeNaoBasicos)
 
-	// get_number_linha
-
 	matrix_A := make([][]float64, linhas)
 	for i := 0; i < linhas; i++ {
 		matrix_A[i] = make([]float64, colunas)
