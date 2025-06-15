@@ -2,7 +2,6 @@ package matriz
 
 import (
 	"bufio"
-	"fmt"
 	"log"
 	"os"
 	"strconv"
@@ -38,20 +37,26 @@ func Contar_linhas() int {
 	return lineCount
 }
 
-func Make_matriz() ([][]float64, []float64, []float64) {
+func Make_matriz() ([][]float64, [][]float64, [][]float64, [][]float64) {
 	text, _ := os.Open("texto.txt")
+	x_in_FX := Total_de_x()
+
 	linhas := Contar_linhas() - 1
-	colunas := linhas + Total_de_x()
+	colunas := linhas + x_in_FX
 
 	var matrix []string
-	var B_matriz []float64
 	matrizCT := make([]float64, colunas)
+
+	B_matriz := make([][]float64, linhas)
+	for i := 0; i < linhas; i++ {
+		B_matriz[i] = make([]float64, 1)
+	}
 
 	var numero float64
 	var err error
-
-	totalX := Total_de_x() + 1
+	totalX := x_in_FX + 1
 	scanner := bufio.NewScanner(text)
+	i := 0
 
 	for scanner.Scan() {
 		if !strings.Contains(scanner.Text(), "max") {
@@ -70,9 +75,10 @@ func Make_matriz() ([][]float64, []float64, []float64) {
 			}
 
 			numero, _ = strconv.ParseFloat(parts[1], 64)
-			B_matriz = append(B_matriz, numero)
+			B_matriz[i][0] = numero
 			matrix = append(matrix, string(parts[0]))
 			totalX++
+			i++
 		} else {
 			parts := strings.Split(scanner.Text(), "=")
 			parts[1] = strings.ReplaceAll(parts[1], " ", "")
@@ -97,7 +103,25 @@ func Make_matriz() ([][]float64, []float64, []float64) {
 				}
 			}
 		}
+
 	}
+
+	CoeNaoBasicos := make([][]float64, 1)
+	CoeNaoBasicos[0] = make([]float64, x_in_FX)
+
+	CoeBasicos := make([][]float64, 1)
+	CoeBasicos[0] = make([]float64, totalX-x_in_FX-1)
+
+	for i := 0; i < len(matrizCT); i++ {
+		if i < len(CoeNaoBasicos[0]) {
+			CoeNaoBasicos[0][i] = matrizCT[i]
+		} else {
+			CoeBasicos[0][i-len(CoeNaoBasicos[0])] = matrizCT[i]
+		}
+	}
+	//fmt.Println("CoeBasicos", CoeBasicos)
+	//fmt.Println("CoeNaoBasicos", CoeNaoBasicos)
+
 	// get_number_linha
 
 	matrix_A := make([][]float64, linhas)
@@ -135,9 +159,9 @@ func Make_matriz() ([][]float64, []float64, []float64) {
 		}
 	}
 
-	for i := 0; i < len(matrix); i++ {
-		fmt.Println("matrix A = B:", matrix_A[i], " = ", B_matriz[i])
-	}
+	//for i := 0; i < len(matrix); i++ {
+	//	fmt.Println("matrix A = B:", matrix_A[i], " = ", B_matriz[i])
+	//}
 
-	return matrix_A, B_matriz, matrizCT
+	return matrix_A, B_matriz, CoeBasicos, CoeNaoBasicos
 }
