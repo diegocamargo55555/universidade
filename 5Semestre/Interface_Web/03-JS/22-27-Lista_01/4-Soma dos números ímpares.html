@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operações com dois números</title>
+</head>
+<body>
+    <script>
+
+        let arr = [5, 12, 8, 23, 42, 17, 3, 99, 54, 61, 2, 33, 75, 19, 88, 4, 29, 50, 91, 7];
+        let sum = 0
+        console.log(arr.length)
+
+        arr.forEach(function(el) {
+            if (el % 2 == 1) {
+                sum += el
+            }
+        })
+        console.log("soma "+ sum)
+
+    </script>
+</body>
+</html>

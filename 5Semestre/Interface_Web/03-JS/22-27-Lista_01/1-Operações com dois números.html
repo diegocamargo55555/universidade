@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operações com dois números</title>
+</head>
+<body>
+    <script>
+
+            let n1 = parseFloat(prompt('digite um numero'));
+            let n2 = parseFloat(prompt('digite mais numero'));
+
+            if (!isNaN(n1) && !isNaN(n2)) {
+                alert("n1 e n2 is a number")
+                alert("sum: " + (n1 + n2))
+                alert("subtracao: " + (n1 - n2))
+                alert("multiplicacao: " + (n1 * n2))
+                alert("divisao: " + (n1 / n2))
+                alert("resto: " + (n1 % n2))
+
+
+            }else{
+                alert("valores nao validos (nao sao numeros)")
+            }
+
+
+    </script>
+</body>
+</html>
