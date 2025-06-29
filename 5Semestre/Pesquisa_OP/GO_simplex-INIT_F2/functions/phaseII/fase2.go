@@ -57,7 +57,7 @@ func Mount_tabela(matrizA [][]float64, matrizB [][]float64, CoeB [][]float64, Co
 		if menorZero {
 			//trocaPosicoes(matrizB, CoeB, nao_basicasN, CoeN, posicaoSBasica, posi)
 			//                trocarPosicoesBeN(&matrizB, &coeficientesB, &nao_basicasN, &coeficientesN, posicaoSBasica, posSairN, &posicoes, &posicoesN);
-			//func trocaPosicoes(matrizB [][]float64, coeficientesB [][]float64, nao_basicasN [][]float64, coeficientesN [][]float64, posicaoSBasica int, posicaoSairN int, posicoes []int, posicoesN []int) {
+			trocaPosicoes(matrizB [][]float64, coeficientesB [][]float64, nao_basicasN [][]float64, coeficientesN [][]float64, posicaoSBasica int, posicaoSairN int, posicoes []int, posicoesN []int) {
 
 		}
 
@@ -193,20 +193,4 @@ func trocaPosicoes(matrizB [][]float64, coeficientesB [][]float64, nao_basicasN 
 	temp := posicoesN[posicaoSairN]
 	posicoesN[posicaoSairN] = posicoes[posicaoSBasica]
 	posicoes[posicaoSBasica] = temp
-}
-
-func trocaLinha(matrizB [][]float64, posi1 int, posi2 int) [][]float64 {
-	tamB := len(matrizB[0])
-	temp := make([]float64, tamB)
-
-	for i := 0; i < tamB; i++ {
-		temp[i] = matrizB[posi1][i]
-	}
-	for i := 0; i < tamB; i++ {
-		matrizB[posi1][i] = matrizB[posi2][i]
-	}
-	for i := 0; i < tamB; i++ {
-		matrizB[posi2][i] = temp[i]
-	}
-	return matrizB
 }
