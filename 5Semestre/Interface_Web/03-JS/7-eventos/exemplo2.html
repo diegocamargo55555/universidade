@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delegaçao de Eventos</title>
+</head>
+
+<body>
+    <h1>Eventos</h1>
+    <div class="container">
+
+        <button id="btn1">Botao 1</button>
+        <button id="btn2">Botao 2</button>
+        <button id="btn3">Botao 3</button>
+        <button id="btn4">Botao 4</button>
+        <button id="btn5">Botao 5</button>
+
+    </div>
+    <script>
+        const container = document.querySelector(".container")
+        const btns = document.querySelectorAll(".container button")
+        btns[1].addEventListener("click", function (e) {
+            console.log(    e.targe);
+            console.log(e.currentTarget);
+            
+        })
+
+
+    </script>
+
+</body>
+
+</html>
