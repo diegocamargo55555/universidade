@@ -7,7 +7,7 @@ export default class Product {
     id: string;
 
     @OneToMany(() => OrdersProducts, orders_products => orders_products.product)
-    order_products: OrdersProducts[];
+    orders_products: OrdersProducts[];
 
     @Column()
     name: string;
@@ -23,5 +23,4 @@ export default class Product {
 
     @UpdateDateColumn()
     updated_at: Date;
-    orders_products: any;
 }

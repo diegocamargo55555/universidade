@@ -69,6 +69,10 @@ export default class CreateOrderService{
 
     //atualizo a quantidade produtos após meu pedido
     const {orders_products} = order;
+    console.log(order);
+
+    console.log("\n\norders_products", orders_products);
+
     const updateProductQuantity = orders_products.map(product=>({
       id: product.product_id,
       quantity: existsProducts.filter(p =>
