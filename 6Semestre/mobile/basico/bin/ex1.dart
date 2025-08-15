@@ -9,6 +9,4 @@ void main(List<String> args) {
   }
 }
 
-double Sum(double a, double b) {
-  return a + b;
-}
+double Sum(double a, double b) => a + b;
