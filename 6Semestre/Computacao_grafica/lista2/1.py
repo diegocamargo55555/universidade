@@ -1,6 +1,6 @@
 import cv2
-from matplotlib import pyplot as plt
 import numpy as np
+from matplotlib import pyplot as plt
 
 def image_convolution(f, w, debug=False):
     N,M = f.shape
@@ -26,23 +26,24 @@ def image_convolution(f, w, debug=False):
 
     return g
 
-
-img= cv2.imread('./Lista1/ihwa.jpeg')
-
-c = img[:,:,0]/3 +img[:,:,1]/3 + img[:,:,2]/3 
-c = c.astype('uint8')
-
 img1 = cv2.imread("lena.png")
 #Convertendo BGR para RGB
 img1_pb = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY) 
+
+
 w_med = np.matrix([[1, 1, 1], [1, 1, 1], [1, 1, 1]])/9.0
 print(w_med)
+
 img2_media = image_convolution(img1_pb, w_med)
-print(img2_media)
+
+# exibindo imagem original e filtrada por w_med
 plt.figure(figsize=(12,12)) 
-
-
-cv2.waitKey(0)
-cv2.destroyAllWindows()
-
-
+plt.subplot(121)
+plt.imshow(cv2.cvtColor(img1_pb, cv2.COLOR_BGR2RGB), cmap="gray", vmin=0, vmax=255)
+plt.title("imagem original, ruidosa")
+plt.axis('off')
+plt.subplot(122)
+plt.imshow(cv2.cvtColor(img2_media, cv2.COLOR_BGR2RGB), cmap="gray", vmin=0, vmax=255)
+plt.title("imagem convoluída com filtro de media")
+plt.axis('off')
+plt.show()

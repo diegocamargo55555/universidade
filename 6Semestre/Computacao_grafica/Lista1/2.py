@@ -1,4 +1,6 @@
 import cv2
+import matplotlib
+print(matplotlib.__version__)
 
 img= cv2.imread('./Lista1/ihwa.jpeg')
 
