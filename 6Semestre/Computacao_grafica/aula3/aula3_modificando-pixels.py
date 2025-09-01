@@ -1,6 +1,6 @@
 import cv2
 
-img = cv2.imread('images.jpeg')
+img = cv2.imread('ihwa.jpeg')
 
 print(img.shape)
 print(img.size)
