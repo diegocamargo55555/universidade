@@ -1,7 +1,8 @@
-import cv2
 import numpy as np
-from matplotlib import pyplot as plt
+import cv2
+import matplotlib.pyplot as plt
 
+# vamos implementar uma funcao que executa convolucao para todos os pixels (x,y) da imagem
 def image_convolution(f, w, debug=False):
     N,M = f.shape
     n,m = w.shape
@@ -25,25 +26,26 @@ def image_convolution(f, w, debug=False):
             g[x,y] = np.sum( np.multiply(sub_f, w_flip)).astype(np.uint8)
 
     return g
-
-img1 = cv2.imread("lena.png")
-#Convertendo BGR para RGB
+    
+    
+img1 = cv2.imread("img_aluno.png")
 img1_pb = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY) 
-
 
 w_med = np.matrix([[1, 1, 1], [1, 1, 1], [1, 1, 1]])/9.0
 print(w_med)
 
-img2_media = image_convolution(img1_pb, w_med)
+w_rand = w_med
+print(w_rand)
 
-# exibindo imagem original e filtrada por w_med
+img1_wrand = image_convolution(img1_pb, w_rand)
+
 plt.figure(figsize=(12,12)) 
 plt.subplot(121)
-plt.imshow(cv2.cvtColor(img1_pb, cv2.COLOR_BGR2RGB), cmap="gray", vmin=0, vmax=255)
-plt.title("imagem original, ruidosa")
+plt.imshow(img1_pb, cmap="gray", vmin=0, vmax=255)
+plt.title("imagem 3")
 plt.axis('off')
 plt.subplot(122)
-plt.imshow(cv2.cvtColor(img2_media, cv2.COLOR_BGR2RGB), cmap="gray", vmin=0, vmax=255)
-plt.title("imagem convoluída com filtro de media")
+plt.imshow(img1_wrand, cmap="gray", vmin=0, vmax=255)
+plt.title("imagem 3 convoluída com filtro aleatorio")
 plt.axis('off')
-plt.show()
+plt.savefig("img_aluno1")
