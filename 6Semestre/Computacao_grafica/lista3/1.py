@@ -2,10 +2,10 @@ import numpy as np
 import cv2 
 from matplotlib import pyplot as plt
 
-img1 = cv2.imread('arara.png', 0)
-img2 = cv2.imread('barra1.png', 0)
-img3 = cv2.imread('barra2.png', 0)
-img4 = cv2.imread('barra3.png', 0)
+img1 = cv2.imread('img_aluno.png', 0)
+img2 = cv2.imread('barra4.png', 0)
+img3 = cv2.imread('teste.tif', 0)
+img4 = cv2.imread('arara.png', 0)
 
 sizes = 64
 img1_s = img1
@@ -52,5 +52,4 @@ plt.subplot(247)
 plt.imshow(magnitude_spectrum3, cmap="gray"); plt.axis('off'); plt.title('filtered')
 plt.subplot(248)
 plt.imshow(magnitude_spectrum4, cmap="gray"); plt.axis('off'); plt.title('filtered')
-
-plt.show()
+plt.savefig('1.png') 
