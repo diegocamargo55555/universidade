@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  servidor:
+    build: ./server
+    tty: true
+    stdin_open: true
+
+    container_name: go_server_ubuntu
+    networks:
+      - go-net
+
+  cliente:
+    build: ./client
+
+    tty: true
+    stdin_open: true
+
+    container_name: go_client_ubuntu
+    networks:
+      - go-net
+    depends_on:
+      - servidor
+
+networks:
+  go-net:
+    driver: bridge
+
+#  docker-compose exec servidor bash
+#  docker-compose exec servidor bash
+#  
