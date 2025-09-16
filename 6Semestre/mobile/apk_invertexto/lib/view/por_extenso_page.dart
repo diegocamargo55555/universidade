@@ -63,10 +63,8 @@ class _PorExtensoPageState extends State<PorExtensoPage> {
                     case ConnectionState.waiting:
                     case ConnectionState.none:
                       return Container(
-                        width: 200,
-                        0,
-                        height: 200,
-                        0,
+                        width: 200.0,
+                        height: 200.0,
                         alignment: Alignment.center,
                         child: CircularProgressIndicator(
                           valueColor: AlwaysStoppedAnimation<Color>(

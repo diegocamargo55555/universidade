@@ -10,7 +10,8 @@ func main() {
 	var conn net.Conn
 	var err error
 
-	conn, err = net.Dial("tcp", "servidor:8080")
+	//host := "172.31.71.2/18"
+	conn, err = net.Dial("tcp", "172.31.71.2:8080")
 
 	if err != nil {
 		fmt.Printf("Não foi possível conectar ao servidor: %s\n", err)

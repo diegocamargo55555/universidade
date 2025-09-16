@@ -25,12 +25,13 @@ func main() {
 		}
 		go handleConnection(conn)
 	}
+
 }
 
 func handleConnection(conn net.Conn) {
 	defer conn.Close()
 	fmt.Printf("Cliente conectado de: %s\n", conn.RemoteAddr().String())
-	buf := make([]byte, 1024) 
+	buf := make([]byte, 1024)
 	n, err := conn.Read(buf)
 	if err != nil {
 		if err != io.EOF {

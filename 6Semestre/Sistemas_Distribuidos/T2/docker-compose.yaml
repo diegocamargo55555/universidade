@@ -26,6 +26,9 @@ networks:
   go-net:
     driver: bridge
 
+#  docker compose up --build -d 
+#  docker compose down
+
 #  docker-compose exec servidor bash
 #  docker-compose exec servidor bash
 #  

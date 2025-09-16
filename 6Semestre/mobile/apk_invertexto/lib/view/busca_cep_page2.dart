@@ -1,7 +1,8 @@
+import 'package:apk_invertexto/service/invertexto_service.dart';
 import 'package:flutter/material.dart';
 
 class BuscaCepPage extends StatefulWidget {
-  const BuscaCepPage({Key? key}) : super(key: key);
+  const BuscaCepPage({super.key});
 
   @override
   State<BuscaCepPage> createState() => _BuscaCepPageState();
@@ -11,43 +12,41 @@ class _BuscaCepPageState extends State<BuscaCepPage> {
   String? campo;
   String? resultado;
   final apiService = InvertextoService();
-
-  final TextEditingController _cepController = TextEditingController();
-  String? _result;
-  bool _loading = false;
-
-  Future<void> _buscarCep() async {
-    final cep = _cepController.text.trim();
-    if (cep.isEmpty || cep.length != 8) {
-      setState(() {
-        _result = 'Digite um CEP válido com 8 dígitos.';
-      });
-      return;
-    }
-    setState(() {
-      _loading = true;
-      _result = null;
-    });
-
-    // Simulação de busca de CEP (substitua por chamada real de API)
-    await Future.delayed(const Duration(seconds: 1));
-    setState(() {
-      _loading = false;
-      _result = 'Endereço encontrado para o CEP $cep (simulado).';
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Buscar CEP')),
+      appBar: AppBar(
+        backgroundColor: Colors.black,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset(
+              'assets/imgs/logo.png',
+              fit: BoxFit.contain,
+              height: 40,
+            ),
+          ],
+        ),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Icon(
+            Icons.arrow_back,
+            color: const Color.fromARGB(255, 255, 246, 220),
+          ),
+        ),
+        centerTitle: true,
+      ),
+      backgroundColor: Colors.black,
       body: Padding(
-        padding: EdgeInsets.all(10.0),
+        padding: EdgeInsets.all(10),
         child: Column(
-          children: <Widget>[
+          children: [
             TextField(
               decoration: InputDecoration(
-                labelText: "Digite um cep",
+                //Não costuma deixar botão
+                labelText: "Digite um CEP: ",
                 labelStyle: TextStyle(color: Colors.white),
                 border: OutlineInputBorder(),
               ),
@@ -61,22 +60,21 @@ class _BuscaCepPageState extends State<BuscaCepPage> {
             ),
             Expanded(
               child: FutureBuilder(
-                future: apiService.convertePorExtenso(campo),
+                future: apiService.buscaCEP(campo), //alvo
                 builder: (context, snapshot) {
+                  //não entendi Perguntar
                   switch (snapshot.connectionState) {
                     case ConnectionState.waiting:
                     case ConnectionState.none:
                       return Container(
                         width: 200,
-                        0,
                         height: 200,
-                        0,
                         alignment: Alignment.center,
                         child: CircularProgressIndicator(
                           valueColor: AlwaysStoppedAnimation<Color>(
+                            //documentação diz para usar sempre a cor Theme do projeto, usando primary e tudo mais??
                             Colors.white,
                           ),
-                          strokeWidth: 8.0,
                         ),
                       );
                     default:
@@ -98,21 +96,20 @@ class _BuscaCepPageState extends State<BuscaCepPage> {
   Widget exibeResultado(BuildContext context, AsyncSnapshot snapshot) {
     String enderecoCompleto = '';
     if (snapshot.data != null) {
-      enderecoCompleto = snapshot.data['street'] ?? "Rua não disponivel";
-      enderecoCompleto = "\n";
-      enderecoCompleto =
-          snapshot.data['neighborhood'] ?? "bairro não disponivel";
-      enderecoCompleto = "\n";
-      enderecoCompleto = snapshot.data['city'] ?? "cidade não disponivel";
-      enderecoCompleto = "\n";
-      enderecoCompleto = snapshot.data['state'] ?? "Estado não disponivel";
+      enderecoCompleto += snapshot.data["street"] ?? "Rua não disponivel";
+      enderecoCompleto += "\n";
+      enderecoCompleto +=
+          snapshot.data['neighborhood'] ?? "Bairro não disponivel";
+      enderecoCompleto += '\n';
+      enderecoCompleto += snapshot.data['city'] ?? "Cidade não disponivel";
+      enderecoCompleto += '\n';
+      enderecoCompleto += snapshot.data['state'] ?? "Estado não disponivel";
     }
     return Padding(
-      padding: EdgeInsets.only(top: 10.0),
+      padding: EdgeInsets.only(top: 10),
       child: Text(
-        snapshot.data["text"] ?? '',
+        enderecoCompleto,
         style: TextStyle(color: Colors.white, fontSize: 18),
-        softWrap: true,
       ),
     );
   }
