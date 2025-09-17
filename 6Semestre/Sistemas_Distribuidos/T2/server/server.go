@@ -5,7 +5,19 @@ import (
 	"io"
 	"net"
 	"os"
+	"strings"
+	"sync"
 )
+
+type client struct {
+	conn     net.Conn
+	username string
+}
+
+var wg sync.WaitGroup
+var messages = make(chan string)
+var clients = make(map[net.Conn]client)
+var clientsMutex sync.Mutex
 
 func main() {
 	port := "8080"
@@ -15,7 +27,9 @@ func main() {
 		os.Exit(1)
 	}
 	defer listener.Close()
-	fmt.Printf("Servidor Ubuntu escutando na porta %s\n", port)
+	fmt.Printf("Servidor escutando na porta %s\n", port)
+
+	go broadcaster()
 
 	for {
 		conn, err := listener.Accept()
@@ -23,26 +37,59 @@ func main() {
 			fmt.Printf("Erro ao aceitar conexão: %s\n", err)
 			continue
 		}
+		wg.Add(1)
 		go handleConnection(conn)
 	}
-
 }
 
 func handleConnection(conn net.Conn) {
-	defer conn.Close()
-	fmt.Printf("Cliente conectado de: %s\n", conn.RemoteAddr().String())
+	defer wg.Done()
+
 	buf := make([]byte, 1024)
 	n, err := conn.Read(buf)
 	if err != nil {
-		if err != io.EOF {
-			fmt.Printf("Erro ao ler dados do cliente: %s\n", err)
-		}
+		fmt.Printf("Erro ao ler nome de usuário: %s\n", err)
+		conn.Close()
 		return
 	}
-	message := string(buf[:n])
-	fmt.Printf("Mensagem recebida: %s\n", message)
-	_, err = conn.Write([]byte("Mensagem recebida pelo servidor Ubuntu!"))
-	if err != nil {
-		fmt.Printf("Erro ao enviar resposta: %s\n", err)
+	username := strings.TrimSpace(string(buf[:n]))
+
+	clientsMutex.Lock()
+	clients[conn] = client{conn, username}
+	clientsMutex.Unlock()
+
+	fmt.Printf("Cliente '%s' conectado de: %s\n", username, conn.RemoteAddr().String())
+
+	defer func() {
+		clientsMutex.Lock()
+		delete(clients, conn)
+		clientsMutex.Unlock()
+		fmt.Printf("Cliente '%s' desconectado: %s\n", username, conn.RemoteAddr().String())
+	}()
+
+	for {
+		n, err := conn.Read(buf)
+		if err != nil {
+			if err != io.EOF {
+				fmt.Printf("Erro ao ler dados do cliente '%s': %s\n", username, err)
+			}
+			return
+		}
+		message := fmt.Sprintf("[%s]: %s\n", username, string(buf[:n]))
+		messages <- message
+	}
+}
+
+func broadcaster() {
+	for {
+		msg := <-messages
+		clientsMutex.Lock()
+		for _, c := range clients {
+			_, err := c.conn.Write([]byte(msg))
+			if err != nil {
+				fmt.Printf("Erro ao enviar mensagem para %s: %s\n", c.username, err)
+			}
+		}
+		clientsMutex.Unlock()
 	}
 }

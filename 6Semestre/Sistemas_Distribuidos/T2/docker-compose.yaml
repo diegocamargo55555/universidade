@@ -22,6 +22,19 @@ services:
     depends_on:
       - servidor
 
+  cliente2:
+    build: ./client
+
+    tty: true
+    stdin_open: true
+
+    container_name: go_client_ubuntu2
+    networks:
+      - go-net
+    depends_on:
+      - servidor
+
+
 networks:
   go-net:
     driver: bridge
