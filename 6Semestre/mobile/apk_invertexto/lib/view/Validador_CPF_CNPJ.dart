@@ -1,14 +1,14 @@
 import 'package:apk_invertexto/service/invertexto_service.dart';
 import 'package:flutter/material.dart';
 
-class BuscaCepPage extends StatefulWidget {
-  const BuscaCepPage({super.key});
+class validadorCPF_CNPJ extends StatefulWidget {
+  const validadorCPF_CNPJ({super.key});
 
   @override
-  State<BuscaCepPage> createState() => _BuscaCepPageState();
+  State<validadorCPF_CNPJ> createState() => _validadorCPF_CNPJState();
 }
 
-class _BuscaCepPageState extends State<BuscaCepPage> {
+class _validadorCPF_CNPJState extends State<validadorCPF_CNPJ> {
   String? campo;
   String? resultado;
   final apiService = InvertextoService();
@@ -45,8 +45,7 @@ class _BuscaCepPageState extends State<BuscaCepPage> {
           children: [
             TextField(
               decoration: InputDecoration(
-                //Não costuma deixar botão
-                labelText: "Digite um CEP: ",
+                labelText: "Digite um CPF ou CNPJ: ",
                 labelStyle: TextStyle(color: Colors.white),
                 border: OutlineInputBorder(),
               ),
@@ -60,9 +59,8 @@ class _BuscaCepPageState extends State<BuscaCepPage> {
             ),
             Expanded(
               child: FutureBuilder(
-                future: apiService.buscaCEP(campo), //alvo
+                future: apiService.valida_CPF_CNPJ(campo),
                 builder: (context, snapshot) {
-                  //não entendi Perguntar
                   switch (snapshot.connectionState) {
                     case ConnectionState.waiting:
                     case ConnectionState.none:
@@ -72,7 +70,6 @@ class _BuscaCepPageState extends State<BuscaCepPage> {
                         alignment: Alignment.center,
                         child: CircularProgressIndicator(
                           valueColor: AlwaysStoppedAnimation<Color>(
-                            //documentação diz para usar sempre a cor Theme do projeto, usando primary e tudo mais??
                             Colors.white,
                           ),
                         ),
@@ -81,8 +78,8 @@ class _BuscaCepPageState extends State<BuscaCepPage> {
                       if (snapshot.hasError) {
                         if (campo?.isNotEmpty == true) {
                           return SizedBox(
-                            height: 50,
-                            width: 300,
+                            height: 500,
+                            width: 1500,
                             child: Column(
                               children: <Widget>[
                                 Icon(
@@ -91,7 +88,7 @@ class _BuscaCepPageState extends State<BuscaCepPage> {
                                   size: 50.0,
                                 ),
                                 Text(
-                                  "Erro!",
+                                  "Error",
                                   style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 20,
@@ -117,21 +114,19 @@ class _BuscaCepPageState extends State<BuscaCepPage> {
   }
 
   Widget exibeResultado(BuildContext context, AsyncSnapshot snapshot) {
-    String enderecoCompleto = '';
-    if (snapshot.data != null) {
-      enderecoCompleto += snapshot.data["street"] ?? "Rua não disponivel";
-      enderecoCompleto += "\n";
-      enderecoCompleto +=
-          snapshot.data['neighborhood'] ?? "Bairro não disponivel";
-      enderecoCompleto += '\n';
-      enderecoCompleto += snapshot.data['city'] ?? "Cidade não disponivel";
-      enderecoCompleto += '\n';
-      enderecoCompleto += snapshot.data['state'] ?? "Estado não disponivel";
+    String resultado = '';
+    if (snapshot.data["formatted"] != null) {
+      resultado += snapshot.data["formatted"] + ": ";
+    }
+    if (snapshot.data["valid"] == true) {
+      resultado += "válido";
+    } else {
+      resultado += "inválido";
     }
     return Padding(
       padding: EdgeInsets.only(top: 10),
       child: Text(
-        enderecoCompleto,
+        resultado,
         style: TextStyle(color: Colors.white, fontSize: 18),
       ),
     );

@@ -11,6 +11,16 @@ class PorExtensoPage extends StatefulWidget {
 class _PorExtensoPageState extends State<PorExtensoPage> {
   String? campo;
   String? resultado;
+  String? moedaCorrente = 'BRL';
+  final List<String> moedas = <String>[
+    'BRL',
+    'USD',
+    'EUR',
+    'GBP',
+    'JPY',
+    'ARS',
+  ];
+
   final apiService = InvertextoService();
 
   @override
@@ -22,7 +32,7 @@ class _PorExtensoPageState extends State<PorExtensoPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(
-              'assets/imgs/logo.png',
+              'assets/imgs/invertexto.png',
               fit: BoxFit.contain,
               height: 40,
             ),
@@ -55,9 +65,33 @@ class _PorExtensoPageState extends State<PorExtensoPage> {
                 });
               },
             ),
+
+            Row(
+              children: <Widget>[
+                DropdownButton<String>(
+                  value: moedaCorrente,
+                  icon: const Icon(Icons.arrow_downward),
+                  elevation: 16,
+                  style: const TextStyle(color: Colors.blueAccent),
+                  underline: Container(height: 2, color: Colors.amber),
+                  onChanged: (String? value) {
+                    setState(() {
+                      moedaCorrente = value!;
+                    });
+                  },
+                  items: moedas.map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
+                ),
+              ],
+            ),
+
             Expanded(
               child: FutureBuilder(
-                future: apiService.convertePorExtenso(campo),
+                future: apiService.convertePorExtenso(campo, moedaCorrente),
                 builder: (context, snapshot) {
                   switch (snapshot.connectionState) {
                     case ConnectionState.waiting:

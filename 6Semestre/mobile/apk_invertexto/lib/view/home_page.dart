@@ -1,5 +1,6 @@
 import 'package:apk_invertexto/view/busca_cep_page.dart';
 import 'package:apk_invertexto/view/por_extenso_page.dart';
+import 'package:apk_invertexto/view/Validador_CPF_CNPJ.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -62,6 +63,25 @@ class HomePage extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => BuscaCepPage()),
+                );
+              },
+            ),
+            SizedBox(height: 30),
+            GestureDetector(
+              child: Row(
+                children: <Widget>[
+                  Icon(Icons.check, color: Colors.white, size: 50.0),
+                  SizedBox(width: 30),
+                  Text(
+                    "VALIDAR CPF/CNPJ",
+                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  ),
+                ],
+              ),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => validadorCPF_CNPJ()),
                 );
               },
             ),

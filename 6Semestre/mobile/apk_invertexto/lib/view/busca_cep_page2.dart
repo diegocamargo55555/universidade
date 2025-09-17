@@ -21,7 +21,7 @@ class _BuscaCepPageState extends State<BuscaCepPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(
-              'assets/imgs/logo.png',
+              'assets/imgs/invertexto.png',
               fit: BoxFit.contain,
               height: 40,
             ),
