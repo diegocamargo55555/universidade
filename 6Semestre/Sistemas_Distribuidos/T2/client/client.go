@@ -17,6 +17,7 @@ func main() {
 	username, _ := reader.ReadString('\n')
 	username = strings.TrimSpace(username)
 
+	
 	conn, err = net.Dial("tcp", "servidor:8080")
 	if err != nil {
 		fmt.Printf("Não foi possível conectar ao servidor: %s\n", err)
@@ -32,7 +33,7 @@ func main() {
 
 	fmt.Printf("Conectado como '%s' ao servidor\n", username)
 
-	go func() {
+	go func() { // ler oq o servidor envia
 		buf := make([]byte, 1024)
 		for {
 			n, err := conn.Read(buf)
@@ -44,7 +45,7 @@ func main() {
 		}
 	}()
 
-	scanner := bufio.NewScanner(os.Stdin)
+	scanner := bufio.NewScanner(os.Stdin) // envia msg
 	for scanner.Scan() {
 		message := scanner.Text()
 		_, err := conn.Write([]byte(message))
