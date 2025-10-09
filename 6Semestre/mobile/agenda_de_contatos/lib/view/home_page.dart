@@ -18,16 +18,6 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    // Contact c = Contact(
-    //   name: "Ana Beatriz",
-    //   email: "aanaaaa@email.com",
-    //   phone: "44444",
-    //   img: null,
-    // );
-    // helper.saveContact(c);
-    // helper.getAllContacts().then((list) {
-    //   print(list);
-    // });
     helper.getAllContacts().then((list) {
       setState(() {
         contacts = list;
@@ -82,7 +72,7 @@ class _HomePageState extends State<HomePage> {
                   image: DecorationImage(
                     image: contacts[index].img != null
                         ? FileImage(File(contacts[index].img!))
-                        : AssetImage("assets/imgs/images.png") as ImageProvider,
+                        : AssetImage("assets/imgs/image.png") as ImageProvider,
                   ),
                 ),
               ),
@@ -94,7 +84,7 @@ class _HomePageState extends State<HomePage> {
                     Text(
                       contacts[index].name ?? "",
                       style: TextStyle(
-                        fontSize: 22.0,
+                        fontSize: 22,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -117,17 +107,18 @@ class _HomePageState extends State<HomePage> {
   }
 
   void _showContactPage({Contact? contact}) async {
-    final updateContact = await Navigator.push(
+    final updatedContact = await Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => ContactPage(contact: contact)),
     );
-    if (updateContact != null) {
-      helper.getAllContacts().then((list) {
-        setState(() {
-          contacts = list;
+    if (updatedContact != null) {
+      setState(() {
+        helper.getAllContacts().then((list) {
+          setState(() {
+            contacts = list;
+          });
         });
       });
     }
-    ;
   }
 }

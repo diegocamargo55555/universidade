@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:agenda_de_contatos/database/helper/contact_helper.dart';
 import 'package:agenda_de_contatos/database/model/contact_model.dart';
 import 'package:flutter/material.dart';
@@ -6,7 +8,9 @@ import 'dart:io';
 
 class ContactPage extends StatefulWidget {
   final Contact? contact;
+
   const ContactPage({Key? key, this.contact}) : super(key: key);
+
   @override
   State<ContactPage> createState() => _ContactPageState();
 }
@@ -25,7 +29,7 @@ class _ContactPageState extends State<ContactPage> {
   void initState() {
     super.initState();
     if (widget.contact == null) {
-      _editContact = Contact(name: "", email: "", phone: "", img: "");
+      _editContact = Contact(name: "", email: "", phone: "");
     } else {
       _editContact = widget.contact;
       _nameController.text = _editContact?.name ?? "";
@@ -39,7 +43,7 @@ class _ContactPageState extends State<ContactPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.blueAccent,
         title: Text(_editContact?.name ?? "Novo Contato"),
         centerTitle: true,
       ),
@@ -47,7 +51,7 @@ class _ContactPageState extends State<ContactPage> {
         onPressed: () {
           _saveContact();
         },
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.lightBlueAccent,
         child: Icon(Icons.save),
       ),
       body: SingleChildScrollView(
@@ -66,7 +70,7 @@ class _ContactPageState extends State<ContactPage> {
                         _editContact?.img != null &&
                             _editContact!.img!.isNotEmpty
                         ? FileImage(File(_editContact!.img!))
-                        : AssetImage("assets/imgs/images.png") as ImageProvider,
+                        : AssetImage("assets/imgs/image.png") as ImageProvider,
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -91,10 +95,11 @@ class _ContactPageState extends State<ContactPage> {
                   _editContact?.email = text;
                 });
               },
+              keyboardType: TextInputType.emailAddress,
             ),
             TextField(
               controller: _phoneController,
-              decoration: InputDecoration(labelText: "Tekefibe"),
+              decoration: InputDecoration(labelText: "Phone"),
               onChanged: (text) {
                 _userEdited = true;
                 setState(() {
