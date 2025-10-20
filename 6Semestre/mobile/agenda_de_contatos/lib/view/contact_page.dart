@@ -134,17 +134,37 @@ class _ContactPageState extends State<ContactPage> {
     if (_editContact?.img == "") {
       _editContact?.img = null;
     }
+
     if (_editContact?.name != null && _editContact!.name!.isNotEmpty) {
-      if (_editContact?.id != null) {
-        await _helper.updateContact(_editContact!);
+      int arroba_posi = _editContact!.email.indexOf('@');
+      if (arroba_posi != -1) {
+        if (_editContact!.email.indexOf('.', arroba_posi) != -1) {
+          if (_editContact!.phone.length >= 10) {
+            if (_editContact?.id != null) {
+              await _helper.updateContact(_editContact!);
+            } else {
+              await _helper.saveContact(_editContact!);
+            }
+            Navigator.pop(context, _editContact);
+          } else {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text("O telefone deve ter 10 digitos")),
+            );
+          }
+        } else {
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(SnackBar(content: Text("email invalido")));
+        }
       } else {
-        await _helper.saveContact(_editContact!);
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text("email invalido")));
       }
-      Navigator.pop(context, _editContact);
     } else {
       ScaffoldMessenger.of(
         context,
-      ).showSnackBar(SnackBar(content: Text("O nome é Obrigatório!")));
+      ).showSnackBar(SnackBar(content: Text("O nome é Obrigatório")));
     }
   }
 }

@@ -161,13 +161,17 @@ class _HomePageState extends State<HomePage> {
                       "Excluir",
                       style: TextStyle(color: Colors.red, fontSize: 20.0),
                     ),
-                    onPressed: () {
+                    onPressed: () async {
                       if (contacts[index].id != null) {
-                        helper.deleteContact(contacts[index].id!);
-                        setState(() {
-                          contacts.removeAt(index);
-                          Navigator.pop(context);
-                        });
+                        bool deletar = await sim_nao(index, context);
+
+                        if (deletar == true) {
+                          helper.deleteContact(contacts[index].id!);
+                          setState(() {
+                            contacts.removeAt(index);
+                            Navigator.pop(context);
+                          });
+                        }
                       } else {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
@@ -219,5 +223,43 @@ class _HomePageState extends State<HomePage> {
       default:
     }
     setState(() {});
+  }
+
+  Future<bool> sim_nao(int index, BuildContext context) async {
+    final bool? result = await showModalBottomSheet<bool>(
+      context: context,
+      builder: (context) {
+        return BottomSheet(
+          onClosing: () {},
+          builder: (context) {
+            return Container(
+              padding: EdgeInsets.all(10.0),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  Text(
+                    "Deseja mesmo deletar esse contato?",
+                    style: TextStyle(color: Colors.redAccent, fontSize: 20),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pop(context, true);
+                    },
+                    child: Text("Sim"),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pop(context, false);
+                    },
+                    child: Text("Não"),
+                  ),
+                ],
+              ),
+            );
+          },
+        );
+      },
+    );
+    return result ?? false;
   }
 }
