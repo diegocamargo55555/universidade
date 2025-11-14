@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "131683247119",
+    "project_id": "mobile2-cafec",
+    "storage_bucket": "mobile2-cafec.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:131683247119:android:a60620353343df6f7f2f7a",
+        "android_client_info": {
+          "package_name": "com.example.auth"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBz1o_UHHbLLDpl_CwdRWrwcToFec3p9U0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
