@@ -44,7 +44,7 @@ int main() {
 
     pi *= largura_passo;
 
-    printf("\nValor aproximado de Pi: %.15f\n", pi);
+    printf("\nValor aproximado de Pi: %f\n", pi);
 
     return 0;
 }
