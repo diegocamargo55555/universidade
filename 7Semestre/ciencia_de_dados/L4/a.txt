@@ -1,0 +1,44 @@
+import re
+from collections import Counter
+
+def contar_top_palavras(caminho_arquivo, top_n=10):
+    try:
+        # Abre o arquivo com encoding utf-8 para suportar acentuação
+        with open(caminho_arquivo, 'r', encoding='utf-8') as arquivo:
+            texto = arquivo.read()
+            
+        # Converte tudo para minúsculas
+        texto = texto.lower()
+        
+        # Tokeniza o texto: extrai apenas sequências de letras (incluindo acentuadas)
+        # Isso ignora automaticamente espaços, números e qualquer pontuação
+        palavras = re.findall(r'\b[a-zà-ÿ]+\b', texto)
+        
+        # O Counter cria um dicionário otimizado onde a chave é a palavra e o valor é a contagem
+        contagem = Counter(palavras)
+        
+        # Retorna as N palavras mais comuns
+        return contagem.most_common(top_n)
+        
+    except FileNotFoundError:
+        print(f"Erro: O arquivo '{caminho_arquivo}' não foi encontrado.")
+        return []
+    except Exception as e:
+        print(f"Ocorreu um erro inesperado: {e}")
+        return []
+
+# --- Exemplo de Uso ---
+if __name__ == "__main__":
+    arquivo_txt = "seu_texto.txt" # Substitua pelo caminho do seu arquivo
+    
+    # Crie um arquivo de teste rápido caso não tenha um
+    with open(arquivo_txt, 'w', encoding='utf-8') as f:
+        f.write("Olá mundo! Este é um teste. O mundo é grande, mas o teste é apenas um teste.")
+        
+    top_10 = contar_top_palavras(arquivo_txt)
+    
+    print("As 10 palavras mais frequentes são:\n")
+    print(f"{'Palavra':<15} | {'Frequência'}")
+    print("-" * 30)
+    for palavra, frequencia in top_10:
+        print(f"{palavra:<15} | {frequencia}")
