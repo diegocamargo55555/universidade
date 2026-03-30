@@ -1,4 +1,5 @@
 #include <omp.h>
+
 #include <stdio.h>
 #define tamanho 100
 
