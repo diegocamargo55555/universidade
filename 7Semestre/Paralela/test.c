@@ -8,7 +8,6 @@ int main() {
     double tempo_inicio, tempo_fim;
 
     #pragma omp parallel for reduction(+:soma) private(x)
-
     for (int i = 0; i < interpolação; i++) {
         // f(x) = 4 / (1 + x^2)
         x = (i + 0.5) * largura_passo;       
