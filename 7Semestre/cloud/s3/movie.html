@@ -1,0 +1,11 @@
+{{ template "header.html" . }}
+<div class="movie-details">
+    <img src="{{ .movie.PosterURL }}" alt="{{ .movie.Title }}">
+    <div class="movie-info">
+        <h2>{{ .movie.Title }}</h2>
+        <p class="meta">{{ .movie.Year }} | Directed by {{ .movie.Director }}</p>
+        <p class="description">{{ .movie.Description }}</p>
+        <a href="/" class="btn-back">← Back to the shadows</a>
+    </div>
+</div>
+{{ template "footer.html" . }}

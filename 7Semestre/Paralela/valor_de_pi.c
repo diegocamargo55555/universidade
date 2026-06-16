@@ -1,50 +1,32 @@
-#include <omp.h>
 #include <stdio.h>
-
-#define NUM_PASSOS 100000
-#define MAX_THREADS 32
+#include <omp.h>
 
 int main() {
-    double largura_passo = 1.0 / (double)NUM_PASSOS;
-    double resultados_parciais[MAX_THREADS];
-    double pi = 0.0;
-    int nthreads_real;
+    long num_passos = 100000; // Cem mil pontos de interpolação
+    double passo;
+    double x, soma = 0.0, pi;
+    double tempo_inicio, tempo_fim, tempo_total_ms;
 
-    for (int i = 0; i < MAX_THREADS; i++) {
-        resultados_parciais[i] = 0.0;
+    passo = 1.0 / (double) num_passos;
+
+    // Inicializa a contagem de tempo
+    tempo_inicio = omp_get_wtime();
+
+    // Paralelização com OpenMP
+    #pragma omp parallel for private(x) reduction(+:soma)
+    for (long i = 0; i < num_passos; i++) {
+        x = (i + 0.5) * passo; // Ponto médio do retângulo
+        soma = soma + 4.0 / (1.0 + x * x);
     }
 
-    #pragma omp parallel
-    {
-        int id = omp_get_thread_num();
-        int nthreads = omp_get_num_threads();
-        
-        if (id == 0) nthreads_real = nthreads;
+    pi = passo * soma;
+    tempo_fim = omp_get_wtime();
 
-        int carga = (NUM_PASSOS + (nthreads - 1)) / nthreads;
-        int inicio = id * carga;
-        int fim = (inicio + carga < NUM_PASSOS) ? (inicio + carga) : NUM_PASSOS;
+    // Calcula o tempo total e converte para milissegundos
+    tempo_total_ms = (tempo_fim - tempo_inicio) * 1000.0;
 
-        double soma_local = 0.0;
-        double x;
-
-        for (int i = inicio; i < fim; i++) {
-            x = (i + 0.5) * largura_passo;
-            soma_local += 4.0 / (1.0 + x * x);
-        }
-
-        resultados_parciais[id] = soma_local;
-
-        printf("Thread %d: inicio=%d, fim=%d, soma_local=%f\n", id, inicio, fim, soma_local);
-    }
-
-    for (int i = 0; i < nthreads_real; i++) {
-        pi += resultados_parciais[i];
-    }
-
-    pi *= largura_passo;
-
-    printf("\nValor aproximado de Pi: %f\n", pi);
+    printf("Valor aproximado de Pi: %.15f\n", pi);
+    printf("Tempo de execução: %.3f ms\n", tempo_total_ms);
 
     return 0;
 }

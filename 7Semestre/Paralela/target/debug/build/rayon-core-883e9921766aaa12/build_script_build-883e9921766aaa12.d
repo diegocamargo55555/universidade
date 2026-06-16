@@ -1,0 +1,5 @@
+/home/dnt/Documents/universidade/7Semestre/Paralela/target/debug/build/rayon-core-883e9921766aaa12/build_script_build-883e9921766aaa12.d: /home/dnt/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rayon-core-1.13.0/build.rs
+
+/home/dnt/Documents/universidade/7Semestre/Paralela/target/debug/build/rayon-core-883e9921766aaa12/build_script_build-883e9921766aaa12: /home/dnt/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rayon-core-1.13.0/build.rs
+
+/home/dnt/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rayon-core-1.13.0/build.rs:

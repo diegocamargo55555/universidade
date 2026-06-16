@@ -1,0 +1,15 @@
+{{ template "header.html" . }}
+<div class="movie-grid">
+    {{ range .movies }}
+    <a href="/movie/{{ .ID }}" style="text-decoration: none; color: inherit;">
+        <div class="movie-card">
+            <img src="{{ .PosterURL }}" alt="{{ .Title }}">
+            <div class="movie-card-content">
+                <h3>{{ .Title }}</h3>
+                <p>{{ .Year }} | {{ .Director }}</p>
+            </div>
+        </div>
+    </a>
+    {{ end }}
+</div>
+{{ template "footer.html" . }}

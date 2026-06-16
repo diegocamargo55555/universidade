@@ -1,0 +1,8 @@
+{{ template "header.html" . }}
+<div style="text-align: center; padding: 5rem 0;">
+    <h2 style="font-size: 4rem; color: #8a0303;">ERROR</h2>
+    <p style="font-size: 1.5rem;">Something went wrong in the darkness.</p>
+    <p style="color: #666;">{{ .message }}</p>
+    <a href="/" class="btn-back">Return to safety</a>
+</div>
+{{ template "footer.html" . }}
